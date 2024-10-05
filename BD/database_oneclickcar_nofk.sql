@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`Cars` (
   `description` LONGTEXT NOT NULL,
   `verified` TINYINT UNSIGNED NOT NULL,
   `sold` TINYINT UNSIGNED NOT NULL,
-  `Users_id_user` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_cars`, `Users_id_user`))
+  `Seller_id_user` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_cars`, `Seller_id_user`))
 ENGINE = InnoDB;
 
 
@@ -61,9 +61,9 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`Comments` (
   `rating` INT NOT NULL,
   `comment_date` DATE NOT NULL,
   `approved` TINYINT NOT NULL,
-  `Sellers_id_seller` INT UNSIGNED NOT NULL,
-  `Users_id_user` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_comment`, `Sellers_id_seller`, `Users_id_user`))
+  `Buyer_id_user` INT UNSIGNED NOT NULL,
+  `Seller_id_user` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_comment`, `Buyer_id_user`, `Seller_id_user`))
 ENGINE = InnoDB;
 
 
@@ -101,12 +101,12 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `OneClickCar`.`Transactions` (
   `id_transaction` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `date_transaction` DATE NOT NULL,
-  `Users_id_buyer` INT UNSIGNED NOT NULL,
-  `Users_id_seller` INT UNSIGNED NOT NULL,
+  `Buyer_id_user` INT UNSIGNED NOT NULL,
+  `Seller_id_user` INT UNSIGNED NOT NULL,
   `Cars_id_cars` INT UNSIGNED NOT NULL,
   `Payment_method_id_card` INT UNSIGNED NOT NULL,
   `Deposit_method_id_account` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_transaction`, `Users_id_buyer`, `Users_id_seller`, `Cars_id_cars`, `Payment_method_id_card`, `Deposit_method_id_account`))
+  PRIMARY KEY (`id_transaction`, `Buyer_id_user`, `Seller_id_user`, `Cars_id_cars`, `Payment_method_id_card`, `Deposit_method_id_account`))
 ENGINE = InnoDB;
 
 
