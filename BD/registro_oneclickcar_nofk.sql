@@ -2,15 +2,15 @@ USE oneclickcar;
 
 -- Inserción de datos en la tabla Users
 INSERT INTO Users (id_user, full_name, phone_number, email, birth_date, password, type_user) VALUES
-(1, 'Juan Santos', '1234567890', 'oneclickcarcontacto@gmail.com', '1990-01-01', 'password1', 'administrador'),
-(2, 'Luis Meléndez', '0987654321', 'luis@example.com', '1992-02-02', 'password2', 'cliente'),
-(3, 'Libertad Rivas', '2345678901', 'libertad@example.com', '1993-03-03', 'password3', 'cliente'),
-(4, 'Antonio Rosas', '3456789012', 'antonio@example.com', '1994-04-04', 'password4', 'cliente'),
-(5, 'Sergio Rolón', '4567890123', 'sergio@example.com', '1995-05-05', 'password5', 'cliente'),
-(6, 'Adrián Hernández', '5678901234', 'andres@example.com', '1996-06-06', 'password6', 'cliente');
+(1, 'Juan Santos', '1234567890', 'oneclickcarcontacto@gmail.com', '1990-01-01', 'password_1', 'administrador'),
+(2, 'Luis Meléndez', '0987654321', 'luis@example.com', '1992-02-02', 'password_2', 'cliente'),
+(3, 'Libertad Rivas', '2345678901', 'libertad@example.com', '1993-03-03', 'password_3', 'cliente'),
+(4, 'Antonio Rosas', '3456789012', 'antonio@example.com', '1994-04-04', 'password_4', 'cliente'),
+(5, 'Sergio Rolón', '4567890123', 'sergio@example.com', '1995-05-05', 'password_5', 'cliente'),
+(6, 'Adrián Hernández', '5678901234', 'andres@example.com', '1996-06-06', 'password_6', 'cliente');
 
 -- Inserción de datos en la tabla Cars
-INSERT INTO Cars (id_cars, type, brand, name, year, kilometer, transmission, price, img, owners, description, verified, sold, Seller_id_user) VALUES
+INSERT INTO Cars (id_car, type, brand, name, year, kilometer, transmission, price, img, owners, description, verified, sold, Seller_id_user) VALUES
 (1, 'Sedán', 'Chevrolet', 'Cavalier', 2021, 51000, 'Manual', 320000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/jzmc4om5b6305qnkarzp.jpg', 2, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 2), 
 (2, 'Sedán', 'KIA', 'Forte', 2019, 97000, 'Manual', 217000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/xrw9p0u81kudod72eo9z.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 3),
 (3, 'Sedán', 'KIA', 'Forte', 2022, 38000, 'Manual', 280000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/pfmdsxdozg4muh8rsm7i.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 4),
@@ -72,7 +72,7 @@ INSERT INTO Deposit_method (id_account, name_account, name_bank, account_bank, U
 (5, 'Adrián Hernández', 'HSBC', '4567890123', 6);
 
 -- Inserción de datos en la tabla Transactions
-INSERT INTO Transactions (id_transaction, date_transaction, Buyer_id_user, Seller_id_user, Cars_id_cars, Payment_method_id_card, Deposit_method_id_account) VALUES
+INSERT INTO Transactions (id_transaction, date_transaction, Buyer_id_user, Seller_id_user, Cars_id_car, Payment_method_id_card, Deposit_method_id_account) VALUES
 (1, '2024-10-01', 2, 3, 31, 1, 2),
 (2, '2024-10-02', 3, 4, 32, 2, 3),
 (3, '2024-10-03', 4, 5, 33, 3, 4),

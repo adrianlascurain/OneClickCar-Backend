@@ -34,7 +34,7 @@ COMMENT = '	';
 -- Table `OneClickCar`.`Cars`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OneClickCar`.`Cars` (
-  `id_cars` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_car` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NOT NULL,
   `brand` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`Cars` (
   `verified` TINYINT UNSIGNED NOT NULL,
   `sold` TINYINT UNSIGNED NOT NULL,
   `Seller_id_user` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_cars`, `Seller_id_user`))
+  PRIMARY KEY (`id_car`, `Seller_id_user`))
 ENGINE = InnoDB;
 
 
@@ -103,10 +103,10 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`Transactions` (
   `date_transaction` DATE NOT NULL,
   `Buyer_id_user` INT UNSIGNED NOT NULL,
   `Seller_id_user` INT UNSIGNED NOT NULL,
-  `Cars_id_cars` INT UNSIGNED NOT NULL,
+  `Cars_id_car` INT UNSIGNED NOT NULL,
   `Payment_method_id_card` INT UNSIGNED NOT NULL,
   `Deposit_method_id_account` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_transaction`, `Buyer_id_user`, `Seller_id_user`, `Cars_id_cars`, `Payment_method_id_card`, `Deposit_method_id_account`))
+  PRIMARY KEY (`id_transaction`, `Buyer_id_user`, `Seller_id_user`, `Cars_id_car`, `Payment_method_id_card`, `Deposit_method_id_account`))
 ENGINE = InnoDB;
 
 
