@@ -18,7 +18,7 @@ USE `OneClickCar` ;
 -- Table `OneClickCar`.`Users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OneClickCar`.`Users` (
-  `id_user` INT UNSIGNED NOT NULL,
+  `id_user` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `full_name` VARCHAR(80) NOT NULL,
   `phone_number` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
