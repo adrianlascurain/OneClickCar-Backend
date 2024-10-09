@@ -5,14 +5,27 @@ public class DepositMethod {
 	private String name_account;
 	private String name_bank;
 	private String account_bank;
-	private Long user_id_user;
+	private Long users_id_user;
 	
+	// Constructores
 	
-	// Getters and setters
+	public DepositMethod() {
+	}
+	
+		public DepositMethod(Long id_account, String name_account, String name_bank, String account_bank,
+			Long users_id_user) {
+		this.id_account = id_account;
+		this.name_account = name_account;
+		this.name_bank = name_bank;
+		this.account_bank = account_bank;
+		this.users_id_user = users_id_user;
+	}
+
+		// Getters and setters
 	public Long getId_account() {
 		return id_account;
 	}
-	
+
 	public void setId_account(Long id_account) {
 		this.id_account = id_account;
 	}
@@ -41,18 +54,18 @@ public class DepositMethod {
 		this.account_bank = account_bank;
 	}
 	
-	public Long getUser_id_user() {
-		return user_id_user;
+	public Long getUsers_id_user() {
+		return users_id_user;
 	}
 	
-	public void setUser_id_user(Long user_id_user) {
-		this.user_id_user = user_id_user;
+	public void setUsers_id_user(Long users_id_user) {
+		this.users_id_user = users_id_user;
 	}
 	
 	@Override
 	public String toString() {
 		return "DepositMethod [id_account=" + id_account + ", name_account=" + name_account + ", name_bank=" + name_bank
-				+ ", account_bank=" + account_bank + ", user_id_user=" + user_id_user + "]";
+				+ ", account_bank=" + account_bank + ", users_id_user=" + users_id_user + "]";
 	}
 	
 	
