@@ -65,11 +65,11 @@ INSERT INTO Payment_method (id_card, name_card, type_card, number_card, date_car
 
 -- Inserción de datos en la tabla Deposit_method
 INSERT INTO Deposit_method (id_account, name_account, name_bank, account_bank, Users_id_user) VALUES
-(1, 'Luis Meléndez', 'BBVA', '1234567890', 2),
-(2, 'Libertad Rivas', 'Banamex', '0987654321', 3),
-(3,'Antonio Rosas', 'Banorte', '2345678901', 4),
-(4, 'Sergio Rolón', 'Santander', '3456789012', 5),
-(5, 'Adrián Hernández', 'HSBC', '4567890123', 6);
+(1, 'Luis Meléndez', 'BBVA', '1234567890123456', 2),
+(2, 'Libertad Rivas', 'Banamex', '0987654321123456', 3),
+(3,'Antonio Rosas', 'Banorte', '2345678901123456', 4),
+(4, 'Sergio Rolón', 'Santander', '3456789012123456', 5),
+(5, 'Adrián Hernández', 'HSBC', '4567890123123456', 6);
 
 -- Inserción de datos en la tabla Transactions
 INSERT INTO Transactions (id_transaction, date_transaction, Buyer_id_user, Seller_id_user, Cars_id_car, Payment_method_id_card, Deposit_method_id_account) VALUES

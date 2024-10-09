@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`Deposit_method` (
   `id_account` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name_account` VARCHAR(45) NOT NULL,
   `name_bank` VARCHAR(45) NOT NULL,
-  `account_bank` VARCHAR(16) NOT NULL,
+  `account_bank` VARCHAR(18) NOT NULL,
   `Users_id_user` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id_account`, `Users_id_user`))
 ENGINE = InnoDB;
