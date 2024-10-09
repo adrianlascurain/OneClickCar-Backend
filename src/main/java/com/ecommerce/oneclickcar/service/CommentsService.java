@@ -31,11 +31,11 @@ public class CommentsService {
 		Comments user=null;
 		boolean flag = false;
 			for(Comments c : lista) {
-				if(c.getId_comment().equals(comments.getUsers_id_user())) {
+				if(c.getId_comment().equals(comments.getId_comment())) {
 					flag = true;
 					break;
-				}
-			}
+				}//if
+			}//foreach
 			if (! flag) {
 				lista.add(comments);
 				user = comments;

@@ -27,7 +27,7 @@ public class CommentsController {
 	}//constructor
 	
 	@GetMapping
-	public ArrayList<Comments> getUsuarios() {
+	public ArrayList<Comments> getComments() {
 		return (ArrayList<Comments>) commentsService.getAllComments();
 	}//getComments
 	
