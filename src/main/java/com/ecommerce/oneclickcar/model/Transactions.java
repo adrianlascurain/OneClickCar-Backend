@@ -1,17 +1,29 @@
 package com.ecommerce.oneclickcar.model;
 
-import java.util.Date;
-
 public class Transactions {
 
 	private Long id_transaction;
-	private Date date_transaction;
+	private String date_transaction;
 	private Long user_id_buyer;
 	private Long user_id_seller;
 	private Long cars_id_cars;
 	private Long payment_method_id_cars;
 	private Long deposit_method_id_account;
 	
+	public Transactions(Long id_transaction, String date_transaction, Long user_id_buyer, Long user_id_seller,
+			Long cars_id_cars, Long payment_method_id_cars, Long deposit_method_id_account) {
+		this.id_transaction = id_transaction;
+		this.date_transaction = date_transaction;
+		this.user_id_buyer = user_id_buyer;
+		this.user_id_seller = user_id_seller;
+		this.cars_id_cars = cars_id_cars;
+		this.payment_method_id_cars = payment_method_id_cars;
+		this.deposit_method_id_account = deposit_method_id_account;
+	}//constructor
+	
+	public Transactions() {
+	}//constructor
+
 	// Getters and setters
 	public Long getId_transaction() {
 		return id_transaction;
@@ -21,11 +33,11 @@ public class Transactions {
 		this.id_transaction = id_transaction;
 	}
 	
-	public Date getDate_transaction() {
+	public String getDate_transaction() {
 		return date_transaction;
 	}
 	
-	public void setDate_transaction(Date date_transaction) {
+	public void setDate_transaction(String date_transaction) {
 		this.date_transaction = date_transaction;
 	}
 	
