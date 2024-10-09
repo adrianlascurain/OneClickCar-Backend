@@ -20,7 +20,25 @@ public class Cars {
 	private Long Users_id_user;
 	
 	// Constructors
+	public Cars(Long id_cars, String type, String brand, String name, Year year, int kilometer, String transmission,
+			int price, String img, int owners, String description, int verified, int sold, Long users_id_user) {
+		this.id_cars = id_cars;
+		this.type = type;
+		this.brand = brand;
+		this.name = name;
+		this.year = year;
+		this.kilometer = kilometer;
+		this.transmission = transmission;
+		this.price = price;
+		this.img = img;
+		this.owners = owners;
+		this.description = description;
+		this.verified = verified;
+		this.sold = sold;
+		Users_id_user = users_id_user;
+	}
 	
+	public Cars() {}
 	
 	// Getters and setters
 	public Long getId_cars() {
