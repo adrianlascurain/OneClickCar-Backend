@@ -1,6 +1,6 @@
 package com.ecommerce.oneclickcar.model;
 
-import java.time.Year;
+//import java.time.Year;
 
 public class Cars {
 
@@ -8,7 +8,7 @@ public class Cars {
 	private String type;
 	private String brand;
 	private String name;
-	private Year year;
+	private int year;
 	private int kilometer;
 	private String transmission;
 	private int price;
@@ -17,10 +17,28 @@ public class Cars {
 	private String description;
 	private int verified;
 	private int sold;
-	private Long Users_id_user;
+	private Long seller_id_user;
 	
 	// Constructors
+	public Cars(Long id_cars, String type, String brand, String name, int year, int kilometer, String transmission,
+			int price, String img, int owners, String description, int verified, int sold, Long seller_id_user) {
+		this.id_cars = id_cars;
+		this.type = type;
+		this.brand = brand;
+		this.name = name;
+		this.year = year;
+		this.kilometer = kilometer;
+		this.transmission = transmission;
+		this.price = price;
+		this.img = img;
+		this.owners = owners;
+		this.description = description;
+		this.verified = verified;
+		this.sold = sold;
+		this.seller_id_user = seller_id_user;
+	}
 	
+	public Cars() {}
 	
 	// Getters and setters
 	public Long getId_cars() {
@@ -55,11 +73,11 @@ public class Cars {
 		this.name = name;
 	}
 	
-	public Year getYear() {
+	public int getYear() {
 		return year;
 	}
 	
-	public void setYear(Year year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 	
@@ -127,12 +145,12 @@ public class Cars {
 		this.sold = sold;
 	}
 	
-	public Long getUsers_id_user() {
-		return Users_id_user;
+	public Long getSeller_id_user() {
+		return seller_id_user;
 	}
 	
-	public void setUsers_id_user(Long users_id_user) {
-		Users_id_user = users_id_user;
+	public void setSeller_id_user(Long seller_id_user) {
+		this.seller_id_user = seller_id_user;
 	}
 
 	@Override
@@ -140,7 +158,7 @@ public class Cars {
 		return "CarsService [id_cars=" + id_cars + ", type=" + type + ", brand=" + brand + ", name=" + name + ", year="
 				+ year + ", kilometer=" + kilometer + ", transmission=" + transmission + ", price=" + price + ", img="
 				+ img + ", owners=" + owners + ", description=" + description + ", verified=" + verified + ", sold="
-				+ sold + ", Users_id_user=" + Users_id_user + "]";
+				+ sold + ", Users_id_user=" + seller_id_user + "]";
 	}
 	
 }
