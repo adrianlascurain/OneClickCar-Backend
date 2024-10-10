@@ -1,35 +1,31 @@
 package com.ecommerce.oneclickcar.model;
 
-import java.util.Date;
 
 public class Users {
 	
+	private Long id_account;
 	private String full_name;
 	private String phone_number;
 	private String email;
-	private Date birth_date;
+	private String birth_date;
 	private String password;
 	private String type_user;
-	private Long id_account;
 	
-	private static Long total = 0L;
 
 	// Constructors
-	public Users(String full_name, String phone_number, String email, Date birth_date, String password,
+	public Users(Long id_account,String full_name, String phone_number, String email, String birth_date, String password,
 			String type_user) {
+		this.id_account = id_account;
 		this.full_name = full_name;
 		this.phone_number = phone_number;
 		this.email = email;
 		this.birth_date = birth_date;
 		this.password = password;
 		this.type_user = type_user;
-		total++;
-		this.id_account = total;
+		
 	}// Users
 	
 	public Users() {
-		total++;
-		this.id_account = total;
 	}// Users
 
 	// Getters and setters
@@ -57,11 +53,11 @@ public class Users {
 		this.email = email;
 	}// setEmail
 
-	public Date getBirth_date() {
+	public String getBirth_date() {
 		return birth_date;
 	}// getBirth_date
 
-	public void setBirth_date(Date birth_date) {
+	public void setBirth_date(String birth_date) {
 		this.birth_date = birth_date;
 	}// setBirth_date
 
