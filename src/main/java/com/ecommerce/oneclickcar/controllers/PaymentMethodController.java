@@ -35,9 +35,9 @@ private final PaymentMethodService paymentMethodService;
 	}//getPaymentMethods
 	
 	@CrossOrigin(origins = "http://127.0.0.1:5501/")
-	@GetMapping(path="{id_card}")
-	public PaymentMethod getPaymentMethod(@PathVariable("id_card") Long id_card){
-		return paymentMethodService.getPaymentMethod(id_card);
+	@GetMapping(path="{idCard}")
+	public PaymentMethod getPaymentMethod(@PathVariable("idCard") Long idCard){
+		return paymentMethodService.getPaymentMethod(idCard);
 	}//getPaymentMethod
 	
 	@CrossOrigin(origins = "http://127.0.0.1:5501/")
@@ -47,22 +47,22 @@ private final PaymentMethodService paymentMethodService;
 	}//addPaymentMethod
 	
 	@CrossOrigin(origins = "http://127.0.0.1:5501/")
-	@DeleteMapping(path="{id_card}")
-	public PaymentMethod deletePaymentMethod(@PathVariable("id_card") Long id_card) {
-		return paymentMethodService.deletePaymentMethod(id_card);
+	@DeleteMapping(path="{idCard}")
+	public PaymentMethod deletePaymentMethod(@PathVariable("idCard") Long idCard) {
+		return paymentMethodService.deletePaymentMethod(idCard);
 	}//deletePaymentMethod
 	
 	@CrossOrigin(origins = "http://127.0.0.1:5501/")
-	@PutMapping(path="{id_card}")
-	public PaymentMethod updatePaymentMethod(@PathVariable("id_card") Long id_card,
-			@RequestParam(required=false) String name_card,
-			@RequestParam(required=false) String type_card,
-			@RequestParam(required=false) String number_card,
-			@RequestParam(required=false) String date_card,
-			@RequestParam(required=false) String cvv_card			
+	@PutMapping(path="{idCard}")
+	public PaymentMethod updatePaymentMethod(@PathVariable("idCard") Long idCard,
+			@RequestParam(required=false) String nameCard,
+			@RequestParam(required=false) String typeCard,
+			@RequestParam(required=false) String numberCard,
+			@RequestParam(required=false) String dateCard,
+			@RequestParam(required=false) String cvvCard			
 			) {
-		return paymentMethodService.updatePaymentMethod(id_card, name_card, 
-				type_card, number_card, date_card, date_card);
+		return paymentMethodService.updatePaymentMethod(idCard, nameCard, 
+				typeCard, numberCard, dateCard, dateCard);
 	}//updatePaymentMethod
 
 }

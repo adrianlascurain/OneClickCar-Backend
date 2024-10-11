@@ -36,9 +36,9 @@ public class DepositMethodControllers {
 	}//getDepositMethods
 	
 	@CrossOrigin(origins = "http://127.0.0.1:5501/")
-	@GetMapping(path="{id_account}")
-	public DepositMethod getDepositMethod(@PathVariable("id_account") Long id_account){
-		return depositMethodService.getDepositMethod(id_account);
+	@GetMapping(path="{idAccount}")
+	public DepositMethod getDepositMethod(@PathVariable("idAccount") Long idAccount){
+		return depositMethodService.getDepositMethod(idAccount);
 	}//getDepositMethod
 	
 	@CrossOrigin(origins = "http://127.0.0.1:5501/")
@@ -48,20 +48,20 @@ public class DepositMethodControllers {
 	}//addDepositMethod
 	
 	@CrossOrigin(origins = "http://127.0.0.1:5501/")
-	@DeleteMapping(path="{id_account}")
-	public DepositMethod deleteDepositMethod(@PathVariable("id_account") Long id_account) {
-		return depositMethodService.deleteDepositMethod(id_account);
+	@DeleteMapping(path="{idAccount}")
+	public DepositMethod deleteDepositMethod(@PathVariable("idAccount") Long idAccount) {
+		return depositMethodService.deleteDepositMethod(idAccount);
 	}//deleteDepositMethod
 	
 	@CrossOrigin(origins = "http://127.0.0.1:5501/")
-	@PutMapping(path="{id_account}")
-	public DepositMethod updateDepositMethod(@PathVariable("id_account") Long id_account,
-			@RequestParam(required=false) String name_account,
-			@RequestParam(required=false) String name_bank,
-			@RequestParam(required=false) String account_bank			
+	@PutMapping(path="{idAccount}")
+	public DepositMethod updateDepositMethod(@PathVariable("idAccount") Long idAccount,
+			@RequestParam(required=false) String nameAccount,
+			@RequestParam(required=false) String nameBank,
+			@RequestParam(required=false) String accountBank			
 			) {
-		return depositMethodService.updateDepositMethod(id_account, name_account, 
-				name_bank, account_bank);
+		return depositMethodService.updateDepositMethod(idAccount, nameAccount, 
+				nameBank, accountBank);
 	}//updateDepositMethod
 	
 }

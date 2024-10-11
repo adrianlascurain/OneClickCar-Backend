@@ -1,85 +1,101 @@
 package com.ecommerce.oneclickcar.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="PaymentMethods")
 public class PaymentMethod {
-	private Long id_card;
-	private String name_card;
-	private String type_card;
-	private String number_card;
-	private String date_card;
-	private String cvv_card;
-	private Long users_id_user;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
+	private Long idCard;
+	@Column(nullable=false)
+	private String nameCard;
+	@Column(nullable=false)
+	private String typeCard;
+	@Column(nullable=false)
+	private String numberCard;
+	@Column(nullable=false)
+	private String dateCard;
+	@Column(nullable=false)
+	private String cvvCard;
+	@Column(nullable=false)
+	private Long usersIdUser;
 	
 	// Constructores
 	public PaymentMethod() {
 	}
 
-	public PaymentMethod(Long id_card, String name_card, String type_card, String number_card, String date_card,
-			String cvv_card, Long users_id_user) {
-		this.id_card = id_card;
-		this.name_card = name_card;
-		this.type_card = type_card;
-		this.number_card = number_card;
-		this.date_card = date_card;
-		this.cvv_card = cvv_card;
-		this.users_id_user = users_id_user;
+	public PaymentMethod(String nameCard, String typeCard, String numberCard, String dateCard,
+			String cvvCard, Long usersIdUser) {
+		this.nameCard = nameCard;
+		this.typeCard = typeCard;
+		this.numberCard = numberCard;
+		this.dateCard = dateCard;
+		this.cvvCard = cvvCard;
+		this.usersIdUser = usersIdUser;
 	}
 	// Setters and getters
 
-	public Long getId_card() {
-		return id_card;
+	public Long getIdCard() {
+		return idCard;
 	}
 
-	public void setId_card(Long id_card) {
-		this.id_card = id_card;
+	public void setIdCard(Long idCard) {
+		this.idCard = idCard;
 	}
 
-	public String getName_card() {
-		return name_card;
+	public String getNameCard() {
+		return nameCard;
 	}
 
-	public void setName_card(String name_card) {
-		this.name_card = name_card;
+	public void setNameCard(String nameCard) {
+		this.nameCard = nameCard;
 	}
 
-	public String getType_card() {
-		return type_card;
+	public String getTypeCard() {
+		return typeCard;
 	}
 
-	public void setType_card(String type_card) {
-		this.type_card = type_card;
+	public void setTypeCard(String typeCard) {
+		this.typeCard = typeCard;
 	}
 
-	public String getNumber_card() {
-		return number_card;
+	public String getNumberCard() {
+		return numberCard;
 	}
 
-	public void setNumber_card(String number_card) {
-		this.number_card = number_card;
+	public void setNumberCard(String numberCard) {
+		this.numberCard = numberCard;
 	}
 
-	public String getDate_card() {
-		return date_card;
+	public String getDateCard() {
+		return dateCard;
 	}
 
-	public void setDate_card(String date_card) {
-		this.date_card = date_card;
+	public void setDateCard(String dateCard) {
+		this.dateCard = dateCard;
 	}
 
-	public String getCvv_card() {
-		return cvv_card;
+	public String getCvvCard() {
+		return cvvCard;
 	}
 
-	public void setCvv_card(String cvv_card) {
-		this.cvv_card = cvv_card;
+	public void setCvvCard(String cvvCard) {
+		this.cvvCard = cvvCard;
 	}
 
-	public Long getUsers_id_user() {
-		return users_id_user;
+	public Long getUsersIdUser() {
+		return usersIdUser;
 	}
 
-	public void setUsers_id_user(Long users_id_user) {
-		this.users_id_user = users_id_user;
+	public void setUsersIdUser(Long usersIdUser) {
+		this.usersIdUser = usersIdUser;
 	}
 	
 	}

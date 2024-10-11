@@ -1,68 +1,68 @@
 package com.ecommerce.oneclickcar.service;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.oneclickcar.model.DepositMethod;
+import com.ecommerce.oneclickcar.repository.DepositMethodRepository;
 
 @Service
 public class DepositMethodService {
 
-	private final ArrayList<DepositMethod> lista = new ArrayList<DepositMethod>();
+	public final DepositMethodRepository depositMethodRepository;
 	
-	public DepositMethodService() {
-		
+	@Autowired
+	public DepositMethodService(DepositMethodRepository depositMethodRepository) {
+		this.depositMethodRepository=depositMethodRepository;
 	}
 	
 	public List<DepositMethod> getAllDepositMethods() {
-		return lista;
+		return depositMethodRepository.findAll();
 	}//getAllDepositMethods
 
-	public DepositMethod getDepositMethod(Long id_account) {
-		DepositMethod deposit=null;
-		
-		for (DepositMethod depositMethod : lista) {
-			if(depositMethod.getId_account()==id_account) {
-				deposit=depositMethod;
-				break;
-			}//if
-		}//foreach
-		return deposit;
+	public DepositMethod getDepositMethod(Long idAccount) {
+return depositMethodRepository.findById(idAccount).orElseThrow(
+		()->new IllegalArgumentException("El método de depósito con el id ["
+				+idAccount+ "] no existe."));
 	}//getDepositMethod
 
 	public DepositMethod addDepositMethod(DepositMethod depositMethod) {
-		// TODO Auto-generated method stub
-		lista.add(depositMethod); 
-		return depositMethod;
+			Optional <DepositMethod> deposit = depositMethodRepository.findByAccountBank(depositMethod.getAccountBank());
+			if(deposit.isEmpty()) {
+				return depositMethodRepository.save(depositMethod);
+			}else {
+				System.out.println("La cuenta de depósito ["
+						+ depositMethod.getAccountBank()+"] ya se encuentra registrada.");
+				return null;
+			}
 	}//addDepositMethod
 
-	public DepositMethod deleteDepositMethod(Long id_account) {
+	public DepositMethod deleteDepositMethod(Long idAccount) {
 		DepositMethod deposit=null;
-		for(DepositMethod depositMethod: lista) {
-			if(depositMethod.getId_account()==id_account) {
-				deposit=lista.remove(lista.indexOf(depositMethod));
-				break;
-			}//if
-		}//foreach
+		if(depositMethodRepository.existsById(idAccount)) {
+			deposit=depositMethodRepository.findById(idAccount).get();
+			depositMethodRepository.deleteById(idAccount);
+		}
 		return deposit;
 	}//deleteDepositMethod
 
-	public DepositMethod updateDepositMethod(Long id_account, String name_account, 
-			String name_bank, String account_bank) {
+	public DepositMethod updateDepositMethod(Long idAccount, String nameAccount, 
+			String nameBank, String accountBank) {
 		
 		DepositMethod deposit=null;
-		for(DepositMethod depositMethod: lista) {
-			if(depositMethod.getId_account()==id_account) {
-				if(name_account !=null) depositMethod.setName_account(name_account);
-				if(name_bank !=null) depositMethod.setName_bank(name_bank);
-				if(account_bank !=null) depositMethod.setAccount_bank(account_bank);
+		
+		if(depositMethodRepository.existsById(idAccount)) {
+			DepositMethod depositMethod = depositMethodRepository.findById(idAccount).get();
+				if(nameAccount !=null) depositMethod.setNameAccount(nameAccount);
+				if(nameBank !=null) depositMethod.setNameBank(nameBank);
+				if(accountBank !=null) depositMethod.setAccountBank(accountBank);
+				depositMethodRepository.save(depositMethod);
 				deposit=depositMethod;
-				break;
 			}//if
-		}//foreach
 		return deposit;
-	}
-	
-}
+	}//updateDepositMethod()
+}//DepositMethodService

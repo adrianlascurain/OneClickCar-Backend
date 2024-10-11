@@ -1,71 +1,71 @@
 package com.ecommerce.oneclickcar.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.oneclickcar.model.PaymentMethod;
+import com.ecommerce.oneclickcar.repository.PaymentMethodRepository;
 
 @Service
 public class PaymentMethodService {
 
-
-	private final ArrayList<PaymentMethod> lista = new ArrayList<PaymentMethod>();
+	public final PaymentMethodRepository paymentMethodRepository;
 	
-	public PaymentMethodService() {
-		
+	@Autowired
+	public PaymentMethodService(PaymentMethodRepository paymentMethodRepository) {
+		this.paymentMethodRepository=paymentMethodRepository;
 	}
 	
 	public List<PaymentMethod> getAllPaymentMethods() {
-		return lista;
+		return paymentMethodRepository.findAll();
 	}//getAllPaymentMethods
 
-	public PaymentMethod getPaymentMethod(Long id_card) {
-		PaymentMethod payment=null;
-		
-		for (PaymentMethod paymentMethod : lista) {
-			if(paymentMethod.getId_card()==id_card) {
-				payment=paymentMethod;
-				break;
-			}//if
-		}//foreach
-		return payment;
+	public PaymentMethod getPaymentMethod(Long idCard) {
+		return paymentMethodRepository.findById(idCard).orElseThrow(
+				()->new IllegalArgumentException("El método de depósito con el id ["
+						+idCard+ "] no existe."));
 	}//getPaymentMethod
 
 	public PaymentMethod addPaymentMethod(PaymentMethod paymentMethod) {
-		// TODO Auto-generated method stub
-		lista.add(paymentMethod); 
-		return paymentMethod;
+		Optional <PaymentMethod> payment = paymentMethodRepository.findByNumberCard(paymentMethod.getNumberCard());
+		if(payment.isEmpty()) {
+			return paymentMethodRepository.save(paymentMethod);
+		}else {
+			System.out.println("El número de tarjeta ["
+					+ paymentMethod.getNumberCard()+"] ya se encuentra registrada.");
+			return null;
+		}
 	}//addPaymentMethod
 
-	public PaymentMethod deletePaymentMethod(Long id_card) {
+	public PaymentMethod deletePaymentMethod(Long idCard) {
 		PaymentMethod payment=null;
-		for(PaymentMethod paymentMethod: lista) {
-			if(paymentMethod.getId_card()==id_card) {
-				payment=lista.remove(lista.indexOf(paymentMethod));
-				break;
-			}//if
-		}//foreach
+		if(paymentMethodRepository.existsById(idCard)) {
+			payment=paymentMethodRepository.findById(idCard).get();
+			paymentMethodRepository.deleteById(idCard);
+		}
 		return payment;
 	}//deletePaymentMethod
 
-	public PaymentMethod updatePaymentMethod(Long id_card, String name_card, 
-			String type_card, String number_card, String date_card, 
-			String cvv_card) {
+	public PaymentMethod updatePaymentMethod(Long idCard, String nameCard, 
+			String typeCard, String numberCard, String dateCard, 
+			String cvvCard) {
 		
 		PaymentMethod payment=null;
-		for(PaymentMethod paymentMethod: lista) {
-			if(paymentMethod.getId_card()==id_card) {
-				if(name_card !=null) paymentMethod.setName_card(name_card);
-				if(type_card !=null) paymentMethod.setType_card(type_card);
-				if(number_card !=null) paymentMethod.setNumber_card(number_card);
-				if(date_card !=null) paymentMethod.setDate_card(date_card);
-				if(cvv_card !=null) paymentMethod.setCvv_card(cvv_card);
+		if(paymentMethodRepository.existsById(idCard)) {
+			PaymentMethod paymentMethod = paymentMethodRepository.findById(idCard).get();
+				if(nameCard !=null) paymentMethod.setNameCard(nameCard);
+				if(typeCard !=null) paymentMethod.setTypeCard(typeCard);
+				if(numberCard !=null) paymentMethod.setNumberCard(numberCard);
+				if(dateCard !=null) paymentMethod.setDateCard(dateCard);
+				if(cvvCard !=null) paymentMethod.setCvvCard(cvvCard);
+				paymentMethodRepository.save(paymentMethod);
 				payment=paymentMethod;
-				break;
+				
 			}//if
-		}//foreach
+		
 		return payment;
 	}
 }

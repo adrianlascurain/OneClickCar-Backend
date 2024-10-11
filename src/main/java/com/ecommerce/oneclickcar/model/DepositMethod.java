@@ -1,71 +1,86 @@
 package com.ecommerce.oneclickcar.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="DepositMethods")
 public class DepositMethod {
-	private Long id_account;
-	private String name_account;
-	private String name_bank;
-	private String account_bank;
-	private Long users_id_user;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
+	private Long idAccount;
+	@Column(nullable=false)
+	private String nameAccount;
+	@Column(nullable=false)
+	private String nameBank;
+	@Column(nullable=false)
+	private String accountBank;
+	@Column(nullable=false)
+	private Long usersIdUser;
 	
 	// Constructores
 	
 	public DepositMethod() {
 	}
 	
-		public DepositMethod(Long id_account, String name_account, String name_bank, String account_bank,
-			Long users_id_user) {
-		this.id_account = id_account;
-		this.name_account = name_account;
-		this.name_bank = name_bank;
-		this.account_bank = account_bank;
-		this.users_id_user = users_id_user;
+		public DepositMethod(String nameAccount, String nameBank, String accountBank,
+			Long usersIdUser) {
+		this.nameAccount = nameAccount;
+		this.nameBank = nameBank;
+		this.accountBank = accountBank;
+		this.usersIdUser = usersIdUser;
 	}
 
 		// Getters and setters
-	public Long getId_account() {
-		return id_account;
+	public Long getIdAccount() {
+		return idAccount;
 	}
 
-	public void setId_account(Long id_account) {
-		this.id_account = id_account;
+	public void setIdAccount(Long idAccount) {
+		this.idAccount = idAccount;
 	}
 	
-	public String getName_account() {
-		return name_account;
+	public String getNameAccount() {
+		return nameAccount;
 	}
 	
-	public void setName_account(String name_account) {
-		this.name_account = name_account;
+	public void setNameAccount(String nameAccount) {
+		this.nameAccount = nameAccount;
 	}
 	
-	public String getName_bank() {
-		return name_bank;
+	public String getNameBank() {
+		return nameBank;
 	}
 	
-	public void setName_bank(String name_bank) {
-		this.name_bank = name_bank;
+	public void setNameBank(String nameBank) {
+		this.nameBank = nameBank;
 	}
 	
-	public String getAccount_bank() {
-		return account_bank;
+	public String getAccountBank() {
+		return accountBank;
 	}
 	
-	public void setAccount_bank(String account_bank) {
-		this.account_bank = account_bank;
+	public void setAccountBank(String accountBank) {
+		this.accountBank = accountBank;
 	}
 	
-	public Long getUsers_id_user() {
-		return users_id_user;
+	public Long getUsersIdUser() {
+		return usersIdUser;
 	}
 	
-	public void setUsers_id_user(Long users_id_user) {
-		this.users_id_user = users_id_user;
+	public void getUsersIdUser(Long usersIdUser) {
+		this.usersIdUser = usersIdUser;
 	}
 	
 	@Override
 	public String toString() {
-		return "DepositMethod [id_account=" + id_account + ", name_account=" + name_account + ", name_bank=" + name_bank
-				+ ", account_bank=" + account_bank + ", users_id_user=" + users_id_user + "]";
+		return "DepositMethod [idAccount=" + idAccount + ", nameAccount=" + nameAccount + ", nameBank=" + nameBank
+				+ ", accountBank=" + accountBank + ", usersIdUser=" + usersIdUser + "]";
 	}
 	
 	
