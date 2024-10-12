@@ -55,6 +55,7 @@ public class CarsService {
 				if (owners != null) carFromDB.setOwners(owners);
 				if (description != null) carFromDB.setDescription(description);
 				if (verified != null) carFromDB.setVerified(verified);
+				carsRepository.save(carFromDB);
 				car = carFromDB;
 		}
 
