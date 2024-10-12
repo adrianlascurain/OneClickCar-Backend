@@ -17,25 +17,24 @@ public class Transactions {
 	@Column(nullable=false)
 	private String dateTransaction;
 	@Column(nullable=false)
-	private Long userIdBuyer;
+	private Long usersIdBuyer;
 	@Column(nullable=false)
-	private Long userIdSeller;
+	private Long usersIdSeller;
 	@Column(nullable=false)
 	private Long carsIdCars;
 	@Column(nullable=false)
-	private Long paymentMethodIdCars;
+	private Long paymentMethodIdCard;
 	@Column(nullable=false)
 	private Long depositMethodIdAccount;
 	
-	public Transactions(Long id_transaction, String date_transaction, Long user_id_buyer, Long user_id_seller,
-			Long cars_id_cars, Long payment_method_id_cars, Long deposit_method_id_account) {
-		this.idTransaction = id_transaction;
-		this.dateTransaction = date_transaction;
-		this.userIdBuyer = user_id_buyer;
-		this.userIdSeller = user_id_seller;
-		this.carsIdCars = cars_id_cars;
-		this.paymentMethodIdCars = payment_method_id_cars;
-		this.depositMethodIdAccount = deposit_method_id_account;
+	public Transactions(String dateTransaction, Long userIdBuyer, Long usersIdSeller,
+			Long carsIdCars, Long paymentMethodIdCard, Long depositMethodIdAccount) {
+		this.dateTransaction = dateTransaction;
+		this.usersIdBuyer = userIdBuyer;
+		this.usersIdSeller = usersIdSeller;
+		this.carsIdCars = carsIdCars;
+		this.paymentMethodIdCard = paymentMethodIdCard;
+		this.depositMethodIdAccount = depositMethodIdAccount;
 	}//constructor
 	
 	public Transactions() {
@@ -58,20 +57,20 @@ public class Transactions {
 		this.dateTransaction = dateTransaction;
 	}
 	
-	public Long getUserIdBuyer() {
-		return userIdBuyer;
+	public Long getUsersIdBuyer() {
+		return usersIdBuyer;
 	}
 	
-	public void setUserIdBuyer(Long userIdBuyer) {
-		this.userIdBuyer = userIdBuyer;
+	public void setUsersIdBuyer(Long usersIdBuyer) {
+		this.usersIdBuyer = usersIdBuyer;
 	}
 	
-	public Long getUser_id_seller() {
-		return userIdSeller;
+	public Long getUsersIdSeller() {
+		return usersIdSeller;
 	}
 	
-	public void setUserIdSeller(Long userIdSeller) {
-		this.userIdSeller = userIdSeller;
+	public void setUsersIdSeller(Long usersIdSeller) {
+		this.usersIdSeller = usersIdSeller;
 	}
 	
 	public Long getCarsIdCars() {
@@ -82,12 +81,12 @@ public class Transactions {
 		this.carsIdCars = carsIdCars;
 	}
 	
-	public Long getPaymentMethodIdCars() {
-		return paymentMethodIdCars;
+	public Long getPaymentMethodIdCard() {
+		return paymentMethodIdCard;
 	}
 	
-	public void setPaymentMethodIdCars(Long paymentMethodIdCars) {
-		this.paymentMethodIdCars = paymentMethodIdCars;
+	public void setPaymentMethodIdCard(Long paymentMethodIdCard) {
+		this.paymentMethodIdCard = paymentMethodIdCard;
 	}
 	
 	public Long getDepositMethodIdAccount() {
@@ -100,8 +99,8 @@ public class Transactions {
 	@Override
 	public String toString() {
 		return "Transactions [idTransaction=" + idTransaction + ", dateTransaction=" + dateTransaction
-				+ ", userIdBuyer=" + userIdBuyer + ", userIdSeller=" + userIdSeller + ", carsIdCars="
-				+ carsIdCars + ", paymentMethodIdCars=" + paymentMethodIdCars + ", depositMethodIdAccount="
+				+ ", usersIdBuyer=" + usersIdBuyer + ", usersIdSeller=" + usersIdSeller + ", carsIdCars="
+				+ carsIdCars + ", paymentMethodIdCard=" + paymentMethodIdCard + ", depositMethodIdAccount="
 				+ depositMethodIdAccount + "]";
 	}
 	

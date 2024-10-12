@@ -22,17 +22,17 @@ public class TransactionsService {
 	
 	public Transactions getTransactions(Long traId) {
 	return transactionsRepository.findById(traId).orElseThrow(
-			()-> new IllegalArgumentException("El comentario con el id [" + traId
+			()-> new IllegalArgumentException("La transacción con el id [" + traId
 					+ "] no existe"));
 	}//getTransactions
 	
 	public Transactions addTransactions(Transactions transactions) {
-		Optional<Transactions> tra = transactionsRepository.findById(transactions.getIdTransaction());
+		Optional <Transactions> tra = transactionsRepository.findByCarsIdCars(transactions.getCarsIdCars());
 		if(tra.isEmpty()) {//no existe el Id
 			return transactionsRepository.save(transactions);
 		}else {
-			System.out.println("El comentario [" + transactions.getIdTransaction()
-			+ "] ya se encuentra");
+			System.out.println("La transacción del carro [" + transactions.getCarsIdCars()
+			+ "] ya se encuentra registrada.");
 			return null;
 		}//if is emptuy
 	}//addTransactions
@@ -46,18 +46,19 @@ public class TransactionsService {
 		return tra;
 	}//deleteTransactions
 	
-	public Transactions updateTransactions(Long traId, String dateTransaction, Long userIdBuyer, Long userIdSeller, Long carsIdCars, Long paymentMethodIdCars, Long depositMethodIdAccount) {
+	public Transactions updateTransactions(Long traId, String dateTransaction, Long usersIdBuyer, Long usersIdSeller, Long carsIdCars, Long paymentMethodIdCard, Long depositMethodIdAccount) {
 		Transactions tra=null;
 		
 			if(transactionsRepository.existsById(traId)) {
 				Transactions transactions = transactionsRepository.findById(traId).get();
 				if (dateTransaction != null) transactions.setDateTransaction(dateTransaction);
-				if (userIdBuyer !=null)transactions.setUserIdBuyer(userIdBuyer);
-				if(userIdSeller !=null) transactions.setUserIdSeller(userIdSeller);
+				if (usersIdBuyer !=null)transactions.setUsersIdBuyer(usersIdBuyer);
+				if(usersIdSeller !=null) transactions.setUsersIdSeller(usersIdSeller);
 				if(carsIdCars !=null) transactions.setCarsIdCars(carsIdCars);
-				if(paymentMethodIdCars !=null) transactions.setPaymentMethodIdCars(paymentMethodIdCars);
+				if(paymentMethodIdCard !=null) transactions.setPaymentMethodIdCard(paymentMethodIdCard);
 				if(depositMethodIdAccount !=null) transactions.setDepositMethodIdAccount(depositMethodIdAccount);
 				tra=transactions;
+				transactionsRepository.save(transactions);
 			}//Exists
 		return tra;
 	}//updateTransactions

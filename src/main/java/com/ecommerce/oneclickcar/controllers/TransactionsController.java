@@ -45,16 +45,16 @@ public class TransactionsController {
 	public Transactions deleteTransactions (@PathVariable("traId") Long traId) {
 		return transactionsService.deleteTransactions(traId);
 	} //deleteTransactions
-	
+
 	@PutMapping(path="{traId}") //http://localhost:8080/api/transactions/1
 	public Transactions updateTransactions(@PathVariable("traId") Long traId,
-									@RequestParam(required=false) String date_transaction,
-									@RequestParam(required=false) Long user_id_buyer,
-									@RequestParam(required=false) Long user_id_seller,
-									@RequestParam(required=false) Long cars_id_cars,
-									@RequestParam(required=false) Long payment_method_id_cars,
-									@RequestParam(required=false) Long deposit_method_id_account) {
-		return transactionsService.updateTransactions(traId, date_transaction, user_id_buyer, user_id_seller, cars_id_cars, payment_method_id_cars,
-				deposit_method_id_account);
+									@RequestParam(required=false) String dateTransaction,
+									@RequestParam(required=false) Long userIdBuyers,
+									@RequestParam(required=false) Long userIdSellers,
+									@RequestParam(required=false) Long carsIdCars,
+									@RequestParam(required=false) Long paymentMethodIdCard,
+									@RequestParam(required=false) Long depositMethodIdAccount) {
+		return transactionsService.updateTransactions(traId, dateTransaction, userIdBuyers, userIdSellers, carsIdCars, paymentMethodIdCard,
+				depositMethodIdAccount);
 	}//updateTransactions
 }//class TransactionsController
