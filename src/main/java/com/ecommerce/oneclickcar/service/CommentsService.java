@@ -1,72 +1,63 @@
 package com.ecommerce.oneclickcar.service;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import com.ecommerce.oneclickcar.model.Comments;
+import com.ecommerce.oneclickcar.repository.CommentsRepository;
+
 
 @Service
 public class CommentsService {
+	public final CommentsRepository commentsRepository;
 	
-	private static final ArrayList<Comments> lista = new ArrayList<Comments>();
-	public CommentsService() {
-		lista.add(new Comments(4L, "muy buen vendedor", 5L, "09/10/2024", 1L, 555L, 877L));
+	public CommentsService(CommentsRepository commentsRepository) {
+		this.commentsRepository = commentsRepository;
 	}//CONSTRUCTOR
 	
-	public ArrayList<Comments> getAllComments() {
-		return lista;
+	public List<Comments> getAllComments() {
+		return commentsRepository.findAll();
 	}//getAllComments
 	
 	public Comments getComments(Long comId) {
-		Comments com=null;
-		for(Comments comments : lista) {
-			if(comments.getId_comment()==comId) {
-				com=comments;
-				break;
-			}//iff
-		}//foreach
-		return com;
+	return commentsRepository.findById(comId).orElseThrow(
+			()-> new IllegalArgumentException("El comentario con el id [" + comId
+					+ "] no existe.")
+			);
 	}//getComments
 	
 	public Comments addComments(Comments comments) {
-		Comments user=null;
-		boolean flag = false;
-			for(Comments c : lista) {
-				if(c.getId_comment().equals(comments.getId_comment())) {
-					flag = true;
-					break;
-				}//if
-			}//foreach
-			if (! flag) {
-				lista.add(comments);
-				user = comments;
-			}//if
-			return comments;
+		Optional<Comments> com = commentsRepository.findById(comments.getIdComment());
+		if(com.isEmpty()) {//no existe el Id
+			return commentsRepository.save(comments);
+		}else {
+			System.out.println("El comentario [" + comments.getIdComment() 
+			+ "] ya se encuentra");
+			return null;
+		}//if is empty
 	}//addComments
 	
 	public Comments deleteComments(Long comId) {
 		Comments com=null;
-		for (Comments comments : lista) {
-			if(comments.getId_comment()==comId) {
-				com=lista.remove(lista.indexOf(comments));
-				break;
-			}//if
-		}//foreach
+			if(commentsRepository.existsById(comId)) {
+				com=commentsRepository.findById(comId).get();
+				commentsRepository.deleteById(comId);
+			}//if exists
 		return com;
 	}//deleteProducto
 
-	public Comments updateComments(Long comId, Long id_comment, String content, Long rating, String comment_date,
-			Long approved) {
+	public Comments updateComments(Long comId, Long idComment, String content, Long rating, Long approved) {
 		Comments com=null;
-		for(Comments comments : lista) {
-			if(comments.getId_comment()==comId) {
+		
+			if(commentsRepository.existsById(comId)) {
+				Comments comments = commentsRepository.findById(comId).get();
 				if (content != null) comments.setContent(content);
 				if (rating !=null) comments.setRating(rating);
-				if(comment_date !=null) comments.setComment_date(comment_date);
 				if(approved !=null) comments.setApproved(approved);
+				commentsRepository.save(comments);
 				com=comments;
-				break;
-			}//if
-		}//foreach
+			}//exists
 		return com;
 	}//updatecomments
 
