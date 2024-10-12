@@ -1,6 +1,6 @@
-	package com.ecommerce.oneclickcar.controllers;
+package com.ecommerce.oneclickcar.controllers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +17,7 @@ import com.ecommerce.oneclickcar.model.Cars;
 import com.ecommerce.oneclickcar.service.CarsService;
 
 @RestController
-@RequestMapping(path = "/api/cars/")
+@RequestMapping(path = "/api/Cars/")
 public class CarsController {
 	
 	private final CarsService carsService;
@@ -28,7 +28,7 @@ public class CarsController {
 	} //CarsController 
 	
 	@GetMapping
-	public ArrayList<Cars> getCars() {
+	public List<Cars> getCars() {
 		return carsService.getAllCars();
 	}// getCars
 	

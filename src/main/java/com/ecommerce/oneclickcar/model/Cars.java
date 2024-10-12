@@ -1,28 +1,44 @@
 package com.ecommerce.oneclickcar.model;
 
-//import java.time.Year;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Cars")
 public class Cars {
 
-	private Long id_cars;
-	private String type;
-	private String brand;
-	private String name;
-	private int year;
-	private int kilometer;
-	private String transmission;
-	private int price;
-	private String img;
-	private int owners;
-	private String description;
-	private int verified;
-	private int sold;
-	private Long seller_id_user;
+	// Table fields
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idCar" , nullable = false, unique = true) 
+	private Long idCar;
+	
+	@Column(nullable = false) private String type;
+	@Column(nullable = false) private String brand;
+	@Column(nullable = false) private String name;
+	@Column(nullable = false) private Integer year;
+	@Column(nullable = false) private Integer kilometer;
+	@Column(nullable = false) private String transmission;
+	@Column(nullable = false) private Integer price;
+	@Column(nullable = false) private String img;
+	@Column(nullable = false) private Integer owners;
+	@Column(nullable = false) private String description;
+	@Column(nullable = false) private Integer verified;
+	@Column(nullable = false) private Integer sold;
+	@Column(nullable = false, unique = true) private String nuSerial;
+	@Column(nullable = false) private Long sellerIdUser;
+
 	
 	// Constructors
-	public Cars(Long id_cars, String type, String brand, String name, int year, int kilometer, String transmission,
-			int price, String img, int owners, String description, int verified, int sold, Long seller_id_user) {
-		this.id_cars = id_cars;
+	public Cars() {}
+
+	public Cars(String type, String brand, String name, Integer year, Integer kilometer, String transmission,
+			Integer price, String img, Integer owners, String description, Integer verified, Integer sold,
+			Long sellerIdUser) {
 		this.type = type;
 		this.brand = brand;
 		this.name = name;
@@ -35,130 +51,138 @@ public class Cars {
 		this.description = description;
 		this.verified = verified;
 		this.sold = sold;
-		this.seller_id_user = seller_id_user;
-	}
-	
-	public Cars() {}
-	
+		this.sellerIdUser = sellerIdUser;
+	}// Cars
+
 	// Getters and setters
-	public Long getId_cars() {
-		return id_cars;
+	public Long getIdCar() {
+		return idCar;
 	}
-	
-	public void setId_cars(Long id_cars) {
-		this.id_cars = id_cars;
+
+	public void setIdCar(Long idCar) {
+		this.idCar = idCar;
 	}
-	
+
 	public String getType() {
 		return type;
 	}
-	
+
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	public String getBrand() {
 		return brand;
 	}
-	
+
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public int getYear() {
+
+	public Integer getYear() {
 		return year;
 	}
-	
-	public void setYear(int year) {
+
+	public void setYear(Integer year) {
 		this.year = year;
 	}
-	
-	public int getKilometer() {
+
+	public Integer getKilometer() {
 		return kilometer;
 	}
-	
-	public void setKilometer(int kilometer) {
+
+	public void setKilometer(Integer kilometer) {
 		this.kilometer = kilometer;
 	}
-	
+
 	public String getTransmission() {
 		return transmission;
 	}
-	
+
 	public void setTransmission(String transmission) {
 		this.transmission = transmission;
 	}
-	
-	public int getPrice() {
+
+	public Integer getPrice() {
 		return price;
 	}
-	
-	public void setPrice(int price) {
+
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	
+
 	public String getImg() {
 		return img;
 	}
-	
+
 	public void setImg(String img) {
 		this.img = img;
 	}
-	
-	public int getOwners() {
+
+	public Integer getOwners() {
 		return owners;
 	}
-	
-	public void setOwners(int owners) {
+
+	public void setOwners(Integer owners) {
 		this.owners = owners;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public int getVerified() {
+
+	public Integer getVerified() {
 		return verified;
 	}
-	
-	public void setVerified(int verified) {
+
+	public void setVerified(Integer verified) {
 		this.verified = verified;
 	}
-	
-	public int getSold() {
+
+	public Integer getSold() {
 		return sold;
 	}
-	
-	public void setSold(int sold) {
+
+	public void setSold(Integer sold) {
 		this.sold = sold;
 	}
 	
-	public Long getSeller_id_user() {
-		return seller_id_user;
-	}
-	
-	public void setSeller_id_user(Long seller_id_user) {
-		this.seller_id_user = seller_id_user;
+	public String getNuSerial() {
+		return nuSerial;
 	}
 
+	public void setNuSerial(String nuSerial) {
+		this.nuSerial = nuSerial;
+	}
+
+	public Long getSellerIdUser() {
+		return sellerIdUser;
+	}
+
+	public void setSellerIdUser(Long sellerIdUser) {
+		this.sellerIdUser = sellerIdUser;
+	}
+
+	// toString
 	@Override
 	public String toString() {
-		return "CarsService [id_cars=" + id_cars + ", type=" + type + ", brand=" + brand + ", name=" + name + ", year="
-				+ year + ", kilometer=" + kilometer + ", transmission=" + transmission + ", price=" + price + ", img="
-				+ img + ", owners=" + owners + ", description=" + description + ", verified=" + verified + ", sold="
-				+ sold + ", Users_id_user=" + seller_id_user + "]";
-	}
+		return "Cars [idCar=" + idCar + ", type=" + type + ", brand=" + brand + ", name=" + name + ", year=" + year
+				+ ", kilometer=" + kilometer + ", transmission=" + transmission + ", price=" + price + ", img=" + img
+				+ ", owners=" + owners + ", description=" + description + ", verified=" + verified + ", sold=" + sold
+				+ ", sellerIdUser=" + sellerIdUser + "]";
+	} // toString
 	
-}
+	
+}// Cars
