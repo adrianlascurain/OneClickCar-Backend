@@ -2,12 +2,12 @@ USE oneclickcar;
 
 -- Inserción de datos en la tabla Users
 INSERT INTO users (id_user, full_name, phone_number, email, birth_date, password, type_user) VALUES
-(1, 'Juan Santos', '1234567890', 'oneclickcarcontacto@gmail.com', '1990-01-01', 'password1', 'admin'),
-(2, 'Luis Meléndez', '0987654321', 'luis@example.com', '1992-02-02', 'password2', 'client'),
-(3, 'Libertad Rivas', '2345678901', 'libertad@example.com', '1993-03-03', 'password3', 'client'),
-(4, 'Antonio Rosas', '3456789012', 'antonio@example.com', '1994-04-04', 'password4', 'client'),
-(5, 'Sergio Rolón', '4567890123', 'sergio@example.com', '1995-05-05', 'password5', 'client'),
-(6, 'Andrés Hernández', '5678901234', 'andres@example.com', '1996-06-06', 'password6', 'client');
+(1, 'Juan Santos', '1234567890', 'oneclickcarcontacto@gmail.com', '1990-01-01', 'password_1', 'admin'),
+(2, 'Luis Meléndez', '0987654321', 'luis@example.com', '1992-02-02', 'password_2', 'client'),
+(3, 'Libertad Rivas', '2345678901', 'libertad@example.com', '1993-03-03', 'password_3', 'client'),
+(4, 'Antonio Rosas', '3456789012', 'antonio@example.com', '1994-04-04', 'password_4', 'client'),
+(5, 'Sergio Rolón', '4567890123', 'sergio@example.com', '1995-05-05', 'password_5', 'client'),
+(6, 'Adrián Hernández', '5678901234', 'adrian@example.com', '1996-06-06', 'password_6', 'client');
 
 
 -- Inserción de datos en la tabla Cars
@@ -47,19 +47,15 @@ INSERT INTO `OneClickCar`.`cars`
 (32, 'VAN', 'Toyota', 'Hiace', 2018, 145000, 'Manual', 233000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889399/CARROS%20ACTUALIZACION/VAN/tizxegacbbkfwlc88hzo.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 1, 'SFABK3AB5PA093132',4),
 (33, 'VAN', 'Ford', 'Transit', 2021, 133000, 'Manual', 244000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889398/CARROS%20ACTUALIZACION/VAN/ctmgfch57gxydh7r0bwg.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 1, 'SFABK3AB5PA093133',5),
 (34, 'VAN', 'Volkswagen', 'Transporter', 2013, 270000, 'Automático', 156000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889399/CARROS%20ACTUALIZACION/VAN/tizxegacbbkfwlc88hzo.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 1, 'SFABK3AB5PA093134',6),
-(35,"VAN", "Mercedes", "Sprinter", 2020, 170000, "Automático", 
-310000, "https://res.cloudinary.com/duqki6x6t/image/upload/v1727898730/CARROS%20ACTUALIZACION/VAN/dsebewpjrkkut6qpk1bs.jpg", 3,
-"Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las 
-revisiones (mécanica y legal), así que contacta al vendedor para más información, 
-cita para revisión",1,1, "SFABK3AB5PA093135", 2);
+(35,"VAN", "Mercedes", "Sprinter", 2020, 170000, "Automático",310000, "https://res.cloudinary.com/duqki6x6t/image/upload/v1727898730/CARROS%20ACTUALIZACION/VAN/dsebewpjrkkut6qpk1bs.jpg", 3,"Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión",1,1, "SFABK3AB5PA093135", 2);
 
 -- Inserción de datos en la tabla Comments
 INSERT INTO comments (id_comment, content, rating, comment_date, approved, sellers_id_seller, users_id_user) VALUES
-(1, 'Excelente servicio, muy recomendado.', 5, '2024-01-01', 1, 2, 2),
-(2, 'El coche está en muy buen estado.', 4, '2024-01-02', 1, 3, 3),
-(3, 'Me encantó el vehículo, excelente compra.', 5, '2024-01-03', 1, 4, 4),
-(4, 'Buena atención al cliente, todo perfecto.', 5, '2024-01-04', 1, 5, 5),
-(5, 'Me ayudaron a encontrar el coche ideal.', 5, '2024-01-05', 1, 6, 6);
+(1, 'Compré un Nissan Urvan 2018 y fue una excelente adquisición a pesar de tener más de 120,000 kms, estéticamente y mecánicamente se encontraba en perfectas condiciones, llevó más de 1 año y sin necesidad de mantenimientos correctivos.', 5, '2024-01-01', 1, 2, 3),
+(2, 'Adquirí una Toyota Hiace 2018 y fue una buena compra, se respetó el precio y las condiciones en las que se me comentó que se encontraba la camioneta, tanto el vendedor como OneClickCar se aseguraron de brindar confiabilidad al proceso.', 4, '2024-01-02', 1, 3, 4),
+(3, 'Le compré un Ford Transit 2021, al inicio todo iba bien pero unos meses posteriores la bomba de gasolina falló, aunque me comentaron que era un tema de desgaste por uso y antigüedad, reconozco que todo el proceso con el vendedor y la platafora fue transparente.', 5, '2024-01-03', 1, 4, 5),
+(4, 'Me encanto el vehículo, recomiendo 100% al vendedor', 5, '2024-01-04', 1, 5, 6),
+(5, 'Pude encontrar mi coche ideal a un excelente precio.', 5, '2024-01-05', 1, 6, 2);
 
 -- Inserción de datos en la tabla Payment_method
 INSERT INTO payment_methods (id_card, name_card, type_card, number_card, date_card, cvv_card, users_id_user) VALUES
@@ -79,9 +75,9 @@ INSERT INTO deposit_methods (id_account, name_account, name_bank, account_bank, 
 
 -- Inserción de datos en la tabla Transactions
 INSERT INTO transactions (id_transaction, date_transaction, users_id_buyer, users_id_seller, cars_id_cars, payment_method_id_card, deposit_method_id_account) VALUES
-(1, '2024-10-01', 2, 1, 1, 1, 1),
-(2, '2024-10-02', 3, 2, 2, 2, 2),
-(3, '2024-10-03', 4, 3, 12, 3, 3),
-(4, '2024-10-04', 5, 4, 17, 4, 4),
-(5, '2024-10-05', 6, 5, 22, 5, 5);
+(1, '2024-10-01', 2, 3, 31, 1, 2),
+(2, '2024-10-02', 3, 4, 32, 2, 3),
+(3, '2024-10-03', 4, 5, 33, 3, 4),
+(4, '2024-10-04', 5, 6, 34, 4, 5),
+(5, '2024-10-05', 6, 2, 35, 5, 1);
 
