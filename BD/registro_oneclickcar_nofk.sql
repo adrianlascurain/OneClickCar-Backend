@@ -47,7 +47,11 @@ INSERT INTO `OneClickCar`.`cars`
 (32, 'VAN', 'Toyota', 'Hiace', 2018, 145000, 'Manual', 233000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889399/CARROS%20ACTUALIZACION/VAN/tizxegacbbkfwlc88hzo.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 1, 'SFABK3AB5PA093132',4),
 (33, 'VAN', 'Ford', 'Transit', 2021, 133000, 'Manual', 244000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889398/CARROS%20ACTUALIZACION/VAN/ctmgfch57gxydh7r0bwg.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 1, 'SFABK3AB5PA093133',5),
 (34, 'VAN', 'Volkswagen', 'Transporter', 2013, 270000, 'Automático', 156000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889399/CARROS%20ACTUALIZACION/VAN/tizxegacbbkfwlc88hzo.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 1, 'SFABK3AB5PA093134',6),
-(35, 'VAN', 'Mercedes', 'Sprinter', 2020, 170000, 'Automático', 310000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727898730/CARROS%20ACTUALIZACION/VAN/dsebewpjrkkut6qpk1bs.jpg', 3,'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión', 1, 1, 'SFABK3AB5PA093134', 2);
+(35,"VAN", "Mercedes", "Sprinter", 2020, 170000, "Automático", 
+310000, "https://res.cloudinary.com/duqki6x6t/image/upload/v1727898730/CARROS%20ACTUALIZACION/VAN/dsebewpjrkkut6qpk1bs.jpg", 3,
+"Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las 
+revisiones (mécanica y legal), así que contacta al vendedor para más información, 
+cita para revisión",1,1, "SFABK3AB5PA093135", 2);
 
 -- Inserción de datos en la tabla Comments
 INSERT INTO comments (id_comment, content, rating, comment_date, approved, sellers_id_seller, users_id_user) VALUES
