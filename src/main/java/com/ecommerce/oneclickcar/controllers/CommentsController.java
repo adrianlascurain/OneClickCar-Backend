@@ -48,11 +48,10 @@ public class CommentsController {
 	
 	@PutMapping(path="{comId}") //http://localhost:8080/api/comments/1
 	public Comments updateComments(@PathVariable("comId") Long comId,
-									@RequestParam(required=false) Long idComment,
 									@RequestParam(required=false) String content,
 									@RequestParam(required=false) Long rating,
 									@RequestParam(required=false) Long approved) {
-		return commentsService.updateComments(comId, idComment, content, rating, approved);
+		return commentsService.updateComments(comId, content, rating, approved);
 	}//updateComments
 	
 }// class CommentsController

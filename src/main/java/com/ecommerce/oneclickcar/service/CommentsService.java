@@ -28,14 +28,19 @@ public class CommentsService {
 	}//getComments
 	
 	public Comments addComments(Comments comments) {
-		Optional<Comments> com = commentsRepository.findById(comments.getIdComment());
-		if(com.isEmpty()) {//no existe el Id
+
+		if(comments.getIdComment()==null) {//Id es nulo
 			return commentsRepository.save(comments);
-		}else {
-			System.out.println("El comentario [" + comments.getIdComment() 
-			+ "] ya se encuentra");
+		}else{
+			Optional <Comments> com = commentsRepository.findById(comments.getIdComment());
+			if(com.isEmpty()) {//Id no existe
+				return commentsRepository.save(comments);
+			}
+			System.out.println("El id del comentario [" + comments.getIdComment()
+			+ "] ya se encuentra registrado.");
 			return null;
-		}//if is empty
+		}
+
 	}//addComments
 	
 	public Comments deleteComments(Long comId) {
@@ -47,7 +52,7 @@ public class CommentsService {
 		return com;
 	}//deleteProducto
 
-	public Comments updateComments(Long comId, Long idComment, String content, Long rating, Long approved) {
+	public Comments updateComments(Long comId, String content, Long rating, Long approved) {
 		Comments com=null;
 		
 			if(commentsRepository.existsById(comId)) {

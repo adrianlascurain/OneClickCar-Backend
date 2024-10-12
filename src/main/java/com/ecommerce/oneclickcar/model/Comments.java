@@ -27,9 +27,8 @@ public class Comments {
 	@Column(nullable=false)
 	private Long usersIdUser;
 	
-	public Comments(Long idComment, String content, Long rating, String commentDate, Long approved,
+	public Comments(String content, Long rating, String commentDate, Long approved,
 			Long sellersIdSeller, Long usersIdUser) {
-		this.idComment = idComment;
 		this.content = content;
 		this.rating = rating;
 		this.commentDate = commentDate;
@@ -47,7 +46,7 @@ public class Comments {
 		return idComment;
 	}
 	
-	public void setId_comment(Long idComment) {
+	public void setIdComment(Long idComment) {
 		this.idComment = idComment;
 	}
 	
@@ -55,8 +54,8 @@ public class Comments {
 		return content;
 	}
 	
-	public void setContent(String content2) {
-		this.content = content2;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
 	public Long getRating() {
