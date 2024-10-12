@@ -1,74 +1,64 @@
 package com.ecommerce.oneclickcar.service;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ecommerce.oneclickcar.model.Transactions;
+import com.ecommerce.oneclickcar.repository.TransactionsRepository;
 
 @Service
 public class TransactionsService {
-	private static final ArrayList<Transactions> lista = new ArrayList<Transactions>();
-	public TransactionsService() {
-		lista.add(new Transactions(1L, "09/10/2024", 33L, 44L, 7L, 3L, 88L));
+	public final TransactionsRepository transactionsRepository;
+	@Autowired
+	public TransactionsService(TransactionsRepository transactionsRepository) {
+		this.transactionsRepository = transactionsRepository;
 	}//CONSTRUCTOR
 	
-	public ArrayList<Transactions> getAllTransactions() {
-		return lista;
+	public List<Transactions> getAllTransactions() {
+		return transactionsRepository.findAll();
 	}//getAllTransactions
 	
 	public Transactions getTransactions(Long traId) {
-		Transactions tra=null;
-		for(Transactions transactions : lista) {
-			if(transactions.getId_transaction()==traId) {
-				tra=transactions;
-				break;
-			}//iff
-		}//foreach
-		return tra;
+	return transactionsRepository.findById(traId).orElseThrow(
+			()-> new IllegalArgumentException("El comentario con el id [" + traId
+					+ "] no existe"));
 	}//getTransactions
 	
 	public Transactions addTransactions(Transactions transactions) {
-		Transactions user=null;
-		boolean flag = false;
-			for(Transactions t : lista) {
-				if(t.getId_transaction().equals(transactions.getId_transaction())) {
-					flag = true;
-					break;
-				}//if
-			}//foreach
-			if (! flag) {
-				lista.add(transactions);
-				user = transactions;
-			}//if
-			return transactions;
+		Optional<Transactions> tra = transactionsRepository.findById(transactions.getIdTransaction());
+		if(tra.isEmpty()) {//no existe el Id
+			return transactionsRepository.save(transactions);
+		}else {
+			System.out.println("El comentario [" + transactions.getIdTransaction()
+			+ "] ya se encuentra");
+			return null;
+		}//if is emptuy
 	}//addTransactions
 
 	public Transactions deleteTransactions(Long traId) {
 		Transactions tra=null;
-		for (Transactions transactions : lista) {
-			if(transactions.getId_transaction()==traId) {
-				tra=lista.remove(lista.indexOf(transactions));
-				break;
-			}//if
-		}//foreach
+		if(transactionsRepository.existsById(traId)) {
+			tra=transactionsRepository.findById(traId).get();
+			transactionsRepository.deleteById(traId);
+		}
 		return tra;
 	}//deleteTransactions
 	
-	public Transactions updateTransactions(Long traId, String date_transaction, Long user_id_buyer, Long user_id_seller, Long cars_id_cars, Long payment_method_id_cars, Long deposit_method_id_account) {
+	public Transactions updateTransactions(Long traId, String dateTransaction, Long userIdBuyer, Long userIdSeller, Long carsIdCars, Long paymentMethodIdCars, Long depositMethodIdAccount) {
 		Transactions tra=null;
-		for(Transactions transactions : lista) {
-			if(transactions.getId_transaction()==traId) {
-				if (date_transaction != null) transactions.setDate_transaction(date_transaction);
-				if (user_id_buyer !=null)transactions.setUser_id_buyer(user_id_buyer);
-				if(user_id_seller !=null) transactions.setUser_id_seller(user_id_seller);
-				if(cars_id_cars !=null) transactions.setCars_id_cars(cars_id_cars);
-				if(payment_method_id_cars !=null) transactions.setPayment_method_id_cars(payment_method_id_cars);
-				if(deposit_method_id_account !=null) transactions.setDeposit_method_id_account(deposit_method_id_account);
+		
+			if(transactionsRepository.existsById(traId)) {
+				Transactions transactions = transactionsRepository.findById(traId).get();
+				if (dateTransaction != null) transactions.setDateTransaction(dateTransaction);
+				if (userIdBuyer !=null)transactions.setUserIdBuyer(userIdBuyer);
+				if(userIdSeller !=null) transactions.setUserIdSeller(userIdSeller);
+				if(carsIdCars !=null) transactions.setCarsIdCars(carsIdCars);
+				if(paymentMethodIdCars !=null) transactions.setPaymentMethodIdCars(paymentMethodIdCars);
+				if(depositMethodIdAccount !=null) transactions.setDepositMethodIdAccount(depositMethodIdAccount);
 				tra=transactions;
-				break;
-			}//if
-		}//foreach
+			}//Exists
 		return tra;
 	}//updateTransactions
-}
+}//class TransactionsService

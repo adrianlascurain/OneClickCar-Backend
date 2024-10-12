@@ -1,23 +1,41 @@
 package com.ecommerce.oneclickcar.model;
+import javax.persistence.Column;
+//POJO Plain Old Java Object
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Comments")
 public class Comments {
-	private Long id_comment;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="idComment", unique=true, nullable=false)
+	private Long idComment;
+	@Column(nullable=false)
 	private String content;
+	@Column(nullable=false)
 	private Long rating;
-	private String comment_date; 
+	@Column(nullable=false)
+	private String commentDate; 
+	@Column(nullable=false)
 	private Long approved;
-	private Long sellers_id_seller;
-	private Long users_id_user;
+	@Column(nullable=false)
+	private Long sellersIdSeller;
+	@Column(nullable=false)
+	private Long usersIdUser;
 	
-	public Comments(Long id_comment, String content, Long rating, String comment_date, Long approved,
-			Long sellers_id_seller, Long users_id_user) {
-		this.id_comment = id_comment;
+	public Comments(Long idComment, String content, Long rating, String commentDate, Long approved,
+			Long sellersIdSeller, Long usersIdUser) {
+		this.idComment = idComment;
 		this.content = content;
 		this.rating = rating;
-		this.comment_date = comment_date;
+		this.commentDate = commentDate;
 		this.approved = approved;
-		this.sellers_id_seller = sellers_id_seller;
-		this.users_id_user = users_id_user;
+		this.sellersIdSeller = sellersIdSeller;
+		this.usersIdUser = usersIdUser;
 	}//constructor
 
 	public Comments() {
@@ -25,12 +43,12 @@ public class Comments {
 
 	// Getters and setters
 	
-	public Long getId_comment() {
-		return id_comment;
+	public Long getIdComment() {
+		return idComment;
 	}
 	
-	public void setId_comment(Long id_comment) {
-		this.id_comment = id_comment;
+	public void setId_comment(Long idComment) {
+		this.idComment = idComment;
 	}
 	
 	public String getContent() {
@@ -49,12 +67,12 @@ public class Comments {
 		this.rating = rating;
 	}
 	
-	public String getComment_date() {
-		return comment_date;
+	public String getCommentDate() {
+		return commentDate;
 	}
 	
-	public void setComment_date(String comment_date) {
-		this.comment_date = comment_date;
+	public void setCommentDate(String commentDate) {
+		this.commentDate = commentDate;
 	}
 	
 	public Long getApproved() {
@@ -65,26 +83,26 @@ public class Comments {
 		this.approved = approved;
 	}
 	
-	public Long getSellers_id_seller() {
-		return sellers_id_seller;
+	public Long getSellersIdSeller() {
+		return sellersIdSeller;
 	}
 	
-	public void setSellers_id_seller(Long sellers_id_seller) {
-		this.sellers_id_seller = sellers_id_seller;
+	public void setSellersIdSeller(Long sellersIdSeller) {
+		this.sellersIdSeller = sellersIdSeller;
 	}
 	
-	public Long getUsers_id_user() {
-		return users_id_user;
+	public Long getUsersIdUser() {
+		return usersIdUser;
 	}
 	
-	public void setUsers_id_user(Long users_id_user) {
-		this.users_id_user = users_id_user;
+	public void setUsersIdUser(Long usersIdUser) {
+		this.usersIdUser = usersIdUser;
 	}
 
 	@Override
 	public String toString() {
-		return "Comments [id_comment=" + id_comment + ", content=" + content + ", rating=" + rating + ", comment_date="
-				+ comment_date + ", approved=" + approved + ", sellers_id_seller=" + sellers_id_seller
-				+ ", users_id_user=" + users_id_user + "]";
+		return "Comments [idComment=" + idComment + ", content=" + content + ", rating=" + rating + ", commentDate="
+				+ commentDate + ", approved=" + approved + ", sellersIdSeller=" + sellersIdSeller
+				+ ", usersIdUser=" + usersIdUser + "]";
 	}//ToString
 }//ClassComments

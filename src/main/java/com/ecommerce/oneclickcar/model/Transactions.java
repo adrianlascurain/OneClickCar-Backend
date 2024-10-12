@@ -1,91 +1,108 @@
 package com.ecommerce.oneclickcar.model;
 
-public class Transactions {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private Long id_transaction;
-	private String date_transaction;
-	private Long user_id_buyer;
-	private Long user_id_seller;
-	private Long cars_id_cars;
-	private Long payment_method_id_cars;
-	private Long deposit_method_id_account;
+@Entity
+@Table(name="Transactions")
+public class Transactions {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="idTransaction", unique=true, nullable=false)
+	private Long idTransaction;
+	@Column(nullable=false)
+	private String dateTransaction;
+	@Column(nullable=false)
+	private Long userIdBuyer;
+	@Column(nullable=false)
+	private Long userIdSeller;
+	@Column(nullable=false)
+	private Long carsIdCars;
+	@Column(nullable=false)
+	private Long paymentMethodIdCars;
+	@Column(nullable=false)
+	private Long depositMethodIdAccount;
 	
 	public Transactions(Long id_transaction, String date_transaction, Long user_id_buyer, Long user_id_seller,
 			Long cars_id_cars, Long payment_method_id_cars, Long deposit_method_id_account) {
-		this.id_transaction = id_transaction;
-		this.date_transaction = date_transaction;
-		this.user_id_buyer = user_id_buyer;
-		this.user_id_seller = user_id_seller;
-		this.cars_id_cars = cars_id_cars;
-		this.payment_method_id_cars = payment_method_id_cars;
-		this.deposit_method_id_account = deposit_method_id_account;
+		this.idTransaction = id_transaction;
+		this.dateTransaction = date_transaction;
+		this.userIdBuyer = user_id_buyer;
+		this.userIdSeller = user_id_seller;
+		this.carsIdCars = cars_id_cars;
+		this.paymentMethodIdCars = payment_method_id_cars;
+		this.depositMethodIdAccount = deposit_method_id_account;
 	}//constructor
 	
 	public Transactions() {
 	}//constructor
 
 	// Getters and setters
-	public Long getId_transaction() {
-		return id_transaction;
+	public Long getIdTransaction() {
+		return idTransaction;
 	}
 	
-	public void setId_transaction(Long id_transaction) {
-		this.id_transaction = id_transaction;
+	public void setIdTransaction(Long idTransaction) {
+		this.idTransaction = idTransaction;
 	}
 	
-	public String getDate_transaction() {
-		return date_transaction;
+	public String getDateTransaction() {
+		return dateTransaction;
 	}
 	
-	public void setDate_transaction(String date_transaction) {
-		this.date_transaction = date_transaction;
+	public void setDateTransaction(String dateTransaction) {
+		this.dateTransaction = dateTransaction;
 	}
 	
-	public Long getUser_id_buyer() {
-		return user_id_buyer;
+	public Long getUserIdBuyer() {
+		return userIdBuyer;
 	}
 	
-	public void setUser_id_buyer(Long user_id_buyer) {
-		this.user_id_buyer = user_id_buyer;
+	public void setUserIdBuyer(Long userIdBuyer) {
+		this.userIdBuyer = userIdBuyer;
 	}
 	
 	public Long getUser_id_seller() {
-		return user_id_seller;
+		return userIdSeller;
 	}
 	
-	public void setUser_id_seller(Long user_id_seller) {
-		this.user_id_seller = user_id_seller;
+	public void setUserIdSeller(Long userIdSeller) {
+		this.userIdSeller = userIdSeller;
 	}
 	
-	public Long getCars_id_cars() {
-		return cars_id_cars;
+	public Long getCarsIdCars() {
+		return carsIdCars;
 	}
 	
-	public void setCars_id_cars(Long cars_id_cars) {
-		this.cars_id_cars = cars_id_cars;
+	public void setCarsIdCars(Long carsIdCars) {
+		this.carsIdCars = carsIdCars;
 	}
 	
-	public Long getPayment_method_id_cars() {
-		return payment_method_id_cars;
+	public Long getPaymentMethodIdCars() {
+		return paymentMethodIdCars;
 	}
 	
-	public void setPayment_method_id_cars(Long payment_method_id_cars) {
-		this.payment_method_id_cars = payment_method_id_cars;
+	public void setPaymentMethodIdCars(Long paymentMethodIdCars) {
+		this.paymentMethodIdCars = paymentMethodIdCars;
 	}
 	
-	public Long getDeposit_method_id_account() {
-		return deposit_method_id_account;
+	public Long getDepositMethodIdAccount() {
+		return depositMethodIdAccount;
 	}
 	
-	public void setDeposit_method_id_account(Long deposit_method_id_account) {
-		this.deposit_method_id_account = deposit_method_id_account;
+	public void setDepositMethodIdAccount(Long depositMethodIdAccount) {
+		this.depositMethodIdAccount = depositMethodIdAccount;
 	}
 	@Override
 	public String toString() {
-		return "Transactions [id_transaction=" + id_transaction + ", date_transaction=" + date_transaction
-				+ ", user_id_buyer=" + user_id_buyer + ", user_id_seller=" + user_id_seller + ", cars_id_cars="
-				+ cars_id_cars + ", payment_method_id_cars=" + payment_method_id_cars + ", deposit_method_id_account="
-				+ deposit_method_id_account + "]";
+		return "Transactions [idTransaction=" + idTransaction + ", dateTransaction=" + dateTransaction
+				+ ", userIdBuyer=" + userIdBuyer + ", userIdSeller=" + userIdSeller + ", carsIdCars="
+				+ carsIdCars + ", paymentMethodIdCars=" + paymentMethodIdCars + ", depositMethodIdAccount="
+				+ depositMethodIdAccount + "]";
 	}
 	
 	

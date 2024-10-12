@@ -1,6 +1,6 @@
 package com.ecommerce.oneclickcar.controllers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +27,7 @@ public class TransactionsController {
 	}//constructor
 	
 	@GetMapping
-	public ArrayList<Transactions> getTransactions() {
+	public List<Transactions> getTransactions() {
 		return  transactionsService.getAllTransactions();
 	}//getComments
 	

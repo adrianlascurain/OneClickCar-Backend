@@ -1,6 +1,6 @@
 package com.ecommerce.oneclickcar.controllers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,8 +27,8 @@ public class CommentsController {
 	}//constructor
 	
 	@GetMapping
-	public ArrayList<Comments> getComments() {
-		return (ArrayList<Comments>) commentsService.getAllComments();
+	public List<Comments> getComments() {
+		return commentsService.getAllComments();
 	}//getComments
 	
 	@GetMapping (path="{comId}") //http://localhost:8080/api/comments/1
@@ -48,12 +48,11 @@ public class CommentsController {
 	
 	@PutMapping(path="{comId}") //http://localhost:8080/api/comments/1
 	public Comments updateComments(@PathVariable("comId") Long comId,
-									@RequestParam(required=false) Long id_comment,
+									@RequestParam(required=false) Long idComment,
 									@RequestParam(required=false) String content,
 									@RequestParam(required=false) Long rating,
-									@RequestParam(required=false) String comment_date,
 									@RequestParam(required=false) Long approved) {
-		return commentsService.updateComments(comId, id_comment, content, rating, comment_date, approved);
+		return commentsService.updateComments(comId, idComment, content, rating, approved);
 	}//updateComments
 	
 }// class CommentsController
