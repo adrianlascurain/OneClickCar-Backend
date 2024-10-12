@@ -33,7 +33,7 @@ COMMENT = '	';
 -- -----------------------------------------------------
 -- Table `OneClickCar`.`cars`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OneClickCar`.`Cars` (
+CREATE TABLE IF NOT EXISTS `OneClickCar`.`cars` (
   `id_cars` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NOT NULL,
   `brand` VARCHAR(45) NOT NULL,
@@ -47,8 +47,10 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`Cars` (
   `description` LONGTEXT NOT NULL,
   `verified` TINYINT UNSIGNED NOT NULL,
   `sold` TINYINT UNSIGNED NOT NULL,
-  `Users_id_user` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_cars`, `Users_id_user`))
+  `nu_serial` VARCHAR(17) NOT NULL,
+  `users_id_user` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_cars`, `users_id_user`),
+  UNIQUE INDEX `nu_serial_UNIQUE` (`nu_serial` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -61,9 +63,9 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`comments` (
   `rating` INT NOT NULL,
   `comment_date` VARCHAR(10) NOT NULL,
   `approved` TINYINT NOT NULL,
-  `Sellers_id_seller` INT UNSIGNED NOT NULL,
-  `Users_id_user` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_comment`, `Sellers_id_seller`, `Users_id_user`))
+  `sellers_id_seller` INT UNSIGNED NOT NULL,
+  `users_id_user` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_comment`, `sellers_id_seller`, `users_id_user`))
 ENGINE = InnoDB;
 
 
@@ -90,8 +92,8 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`deposit_methods` (
   `name_account` VARCHAR(45) NOT NULL,
   `name_bank` VARCHAR(45) NOT NULL,
   `account_bank` VARCHAR(16) NOT NULL,
-  `Users_id_user` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_account`, `Users_id_user`))
+  `users_id_user` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_account`, `users_id_user`))
 ENGINE = InnoDB;
 
 
@@ -100,13 +102,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OneClickCar`.`transactions` (
   `id_transaction` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `date_transaction` DATE NOT NULL,
-  `Users_id_buyer` INT UNSIGNED NOT NULL,
-  `Users_id_seller` INT UNSIGNED NOT NULL,
-  `Cars_id_cars` INT UNSIGNED NOT NULL,
-  `Payment_method_id_card` INT UNSIGNED NOT NULL,
-  `Deposit_method_id_account` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_transaction`, `Users_id_buyer`, `Users_id_seller`, `Cars_id_cars`, `Payment_method_id_card`, `Deposit_method_id_account`))
+  `date_transaction` VARCHAR(10) NOT NULL,
+  `users_id_buyer` INT UNSIGNED NOT NULL,
+  `users_id_seller` INT UNSIGNED NOT NULL,
+  `cars_id_cars` INT UNSIGNED NOT NULL,
+  `payment_method_id_card` INT UNSIGNED NOT NULL,
+  `deposit_method_id_account` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_transaction`, `users_id_buyer`, `users_id_seller`, `cars_id_cars`, `payment_method_id_card`, `deposit_method_id_account`))
 ENGINE = InnoDB;
 
 
