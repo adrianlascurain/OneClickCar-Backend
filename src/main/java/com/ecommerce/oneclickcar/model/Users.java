@@ -1,98 +1,110 @@
 package com.ecommerce.oneclickcar.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Users")
 public class Users {
 	
-	private Long id_account;
-	private String full_name;
-	private String phone_number;
-	private String email;
-	private String birth_date;
-	private String password;
-	private String type_user;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idUser" , nullable = false, unique = true) 
+	private Long idUser;
 	
-
-	// Constructors
-	public Users(Long id_account,String full_name, String phone_number, String email, String birth_date, String password,
-			String type_user) {
-		this.id_account = id_account;
-		this.full_name = full_name;
-		this.phone_number = phone_number;
+	@Column(nullable = false) private String fullName;
+	@Column(nullable = false) private String phoneNumber;
+	@Column(nullable = false, unique = true) private String email;
+	@Column(nullable = false) private String birthDate;
+	@Column(nullable = false) private String password;
+	@Column(nullable = false) private String typeUser;
+	
+   // Constructors
+	public Users(String fullName, String phoneNumber, String email, String birthDate, String password, String typeUser) {
+		this.fullName = fullName;
+		this.phoneNumber = phoneNumber;
 		this.email = email;
-		this.birth_date = birth_date;
+		this.birthDate = birthDate;
 		this.password = password;
-		this.type_user = type_user;
-		
-	}// Users
+		this.typeUser = typeUser;
+	}
 	
-	public Users() {
-	}// Users
-
+	public Users() {}
+	
 	// Getters and setters
-	public String getFull_name() {
-		return full_name;
-	}// getFull_name
+	
+	public Long getIdUser() {
+		return idUser;
+	}
 
-	public void setFull_name(String full_name) {
-		this.full_name = full_name;
-	}// setFull_name
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
 
-	public String getPhone_number() {
-		return phone_number;
-	}// getPhone_number
+	public String getFullName() {
+		return fullName;
+	}
 
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
-	}// setPhone_number
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
 	public String getEmail() {
 		return email;
-	}// getEmail
+	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}// setEmail
+	}
 
-	public String getBirth_date() {
-		return birth_date;
-	}// getBirth_date
+	public String getBirthDate() {
+		return birthDate;
+	}
 
-	public void setBirth_date(String birth_date) {
-		this.birth_date = birth_date;
-	}// setBirth_date
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
 
 	public String getPassword() {
 		return password;
-	}// getPassword
+	}
 
 	public void setPassword(String password) {
 		this.password = password;
-	}// setPasswor
+	}
 
-	public String getType_user() {
-		return type_user;
-	}// getType_user
+	public String getTypeUser() {
+		return typeUser;
+	}
 
-	public void setType_user(String type_user) {
-		this.type_user = type_user;
-	}// setType_user
+	public void setTypeUser(String typeUser) {
+		this.typeUser = typeUser;
+	}
 
-	public Long getId_account() {
-		return id_account;
-	}// getId_account
-
-	public void setId_account(Long id_account) {
-		this.id_account = id_account;
-	} //setId_account
-
-	// toString method
+	
+	// toString
 	@Override
 	public String toString() {
-		return "Users [full_name=" + full_name + ", phone_number=" + phone_number + ", email=" + email + ", birth_date="
-				+ birth_date + ", password=" + password + ", type_user=" + type_user + ", id_account=" + id_account
-				+ "]";
-	}// toString
+		return "Users [idUser=" + idUser + ", fullName=" + fullName + ", phoneNumber=" + phoneNumber + ", email="
+				+ email + ", birthDate=" + birthDate + ", password=" + password + ", typeUser=" + typeUser + "]";
+	}
+
 	
+	
+
+
 	
 	
 	

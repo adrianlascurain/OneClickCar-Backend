@@ -17,7 +17,7 @@ import com.ecommerce.oneclickcar.model.Cars;
 import com.ecommerce.oneclickcar.service.CarsService;
 
 @RestController
-@RequestMapping(path = "/api/Cars/")
+@RequestMapping(path = "/api/cars/")
 public class CarsController {
 	
 	private final CarsService carsService;
