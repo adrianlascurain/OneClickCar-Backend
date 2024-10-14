@@ -29,7 +29,7 @@ public class UsersService {
 		return usersRepository.findAll();
 	}// getAllUsers
 
-	public Users getUser(UserCredentials userCredentials, Long userId) {
+	public Users getUser(Long userId) {
 			return usersRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("El usuario con el id [" + userId
 					+ "] no existe."));
 	}// getUser
@@ -62,6 +62,7 @@ public class UsersService {
 			if(full_name != null) userFromDB.setFullName(full_name);
 			if(phone_number != null) userFromDB.setPhoneNumber(phone_number);
 			if(birth_date != null) userFromDB.setBirthDate(birth_date);
+			usersRepository.save(userFromDB);
 			user = userFromDB;
 		}// if 
 		return user;

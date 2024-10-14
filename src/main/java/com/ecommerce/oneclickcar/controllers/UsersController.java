@@ -35,8 +35,8 @@ public class UsersController {
 	}// getAllUsers
 	
 	@GetMapping(path="{userId}")
-	public Users getUser(@RequestBody UserCredentials userCredentials,@PathVariable("userId") Long userId) {
-		return userService.getUser(userCredentials, userId);
+	public Users getUser(@PathVariable("userId") Long userId) {
+		return userService.getUser(userId);
 	}// getUser
 	
 	@PostMapping
