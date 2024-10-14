@@ -3,6 +3,7 @@ package com.ecommerce.oneclickcar.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,21 +28,25 @@ public class CarsController {
 		this.carsService = carsService;
 	} //CarsController 
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@GetMapping
 	public List<Cars> getCars() {
 		return carsService.getAllCars();
 	}// getCars
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@GetMapping(path="{carId}")
 	public Cars getCar(@PathVariable("carId") Long carId) {
 		return carsService.getCar(carId);
 	}// getCar
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@PostMapping
 	public Cars addCar(@RequestBody Cars car) {
 		return carsService.addCar(car);
 	}// addCar
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@PutMapping(path="{carId}")
 	public Cars updateCar(@PathVariable("carId") Long carId,
 			@RequestParam(required = false) String type,
@@ -60,6 +65,7 @@ public class CarsController {
 				,verified);
 	}//updateCar
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@DeleteMapping(path="{carId}")
 	public Cars deleteCar(@PathVariable("carId") Long carId) {
 		return carsService.deleteCar(carId);

@@ -3,6 +3,7 @@ package com.ecommerce.oneclickcar.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,26 +27,31 @@ public class TransactionsController {
 		this.transactionsService = transactionsService;
 	}//constructor
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@GetMapping
 	public List<Transactions> getTransactions() {
 		return  transactionsService.getAllTransactions();
 	}//getComments
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@GetMapping (path="{traId}") //http://localhost:8080/api/transactions/1
 	public Transactions getTransactions(@PathVariable("traId") Long traId) {
 		return transactionsService.getTransactions(traId);
 	}//getComment
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@PostMapping
 	public Transactions addTransactions(@RequestBody Transactions transactions) {
 		return transactionsService.addTransactions(transactions);
 	}//postMapping
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@DeleteMapping(path="{traId}") //http://localhost:8080/api/transactions/1
 	public Transactions deleteTransactions (@PathVariable("traId") Long traId) {
 		return transactionsService.deleteTransactions(traId);
 	} //deleteTransactions
-
+	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@PutMapping(path="{traId}") //http://localhost:8080/api/transactions/1
 	public Transactions updateTransactions(@PathVariable("traId") Long traId,
 									@RequestParam(required=false) String dateTransaction,

@@ -3,6 +3,7 @@ package com.ecommerce.oneclickcar.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,21 +30,25 @@ public class UsersController {
 		this.userService = userService;
 	}// UserController
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@GetMapping
 	public List<Users> getAllUsers() {
 		return userService.getAllUsers();
 	}// getAllUsers
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@GetMapping(path="{userId}")
 	public Users getUser(@PathVariable("userId") Long userId) {
 		return userService.getUser(userId);
 	}// getUser
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@PostMapping
 	public Users createUser(@RequestBody Users user) {
 		return userService.addUser(user);
 	}// createUser
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@PutMapping(path="{userId}")
 	public Users updateUser(@PathVariable("userId") Long userId,
 			@RequestParam(required = false) String fullName,
@@ -52,12 +57,14 @@ public class UsersController {
 		return userService.updateUser(userId, fullName, phoneNumber, birthDate);
 	}// updateUser
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@PutMapping(path="/passwords/{userId}")
 	public Users updatePassword(@PathVariable("userId") Long userId,
 			@RequestBody ChangePassword changePassword) {
 		return userService.updatePassword(userId, changePassword);
 	}// updatePassword
 	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
 	@DeleteMapping(path="{userId}")
 	public Users deleteUser(@PathVariable("userId") Long userId) {
 		return userService.deleteUser(userId);
