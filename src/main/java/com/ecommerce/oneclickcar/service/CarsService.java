@@ -40,7 +40,8 @@ public class CarsService {
 	}// addCar
 
 	public Cars updateCar(Long carId, String type, String brand, String name, Integer year, Integer kilometer,
-			String transmission, Integer price, String img, Integer owners, String description, Integer verified) {
+			String transmission, Integer price, String img, Integer owners, String description, Integer verified, Integer sold,
+			Long usersIdSeller) {
 		Cars car = null;
 		if(carsRepository.existsById(carId)) {
 				Cars carFromDB = carsRepository.findById(carId).get();
@@ -55,6 +56,8 @@ public class CarsService {
 				if (owners != null) carFromDB.setOwners(owners);
 				if (description != null) carFromDB.setDescription(description);
 				if (verified != null) carFromDB.setVerified(verified);
+				if (sold != null) carFromDB.setSold(sold);
+				if (usersIdSeller != null) carFromDB.setUsersIdSeller(usersIdSeller);
 				carsRepository.save(carFromDB);
 				car = carFromDB;
 		}

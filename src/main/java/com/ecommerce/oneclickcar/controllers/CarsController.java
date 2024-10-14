@@ -59,10 +59,12 @@ public class CarsController {
 			@RequestParam(required = false) String img,
 			@RequestParam(required = false) Integer owners,
 			@RequestParam(required = false) String description,
-			@RequestParam(required = false) Integer verified) {
+			@RequestParam(required = false) Integer verified,
+			@RequestParam(required=false) Integer sold,
+			@RequestParam(required=false) Long usersIdSeller) {
 		return carsService.updateCar(carId,type,brand,name,year
 				,kilometer,transmission,price,img,owners,description
-				,verified);
+				,verified, sold, usersIdSeller);
 	}//updateCar
 	
 	@CrossOrigin(origins = "http://127.0.0.1:5501/")
