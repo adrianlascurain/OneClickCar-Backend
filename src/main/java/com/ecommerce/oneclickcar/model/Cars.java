@@ -30,7 +30,7 @@ public class Cars {
 	@Column(nullable = false) private Integer verified;
 	@Column(nullable = false) private Integer sold;
 	@Column(nullable = false, unique = true) private String nuSerial;
-	@Column(nullable = false) private Long sellerIdUser;
+	@Column(nullable = false) private Long usersIdSeller;
 
 	
 	// Constructors
@@ -38,7 +38,7 @@ public class Cars {
 
 	public Cars(String type, String brand, String name, Integer year, Integer kilometer, String transmission,
 			Integer price, String img, Integer owners, String description, Integer verified, Integer sold,
-			Long sellerIdUser) {
+			Long usersIdSeller) {
 		this.type = type;
 		this.brand = brand;
 		this.name = name;
@@ -51,7 +51,7 @@ public class Cars {
 		this.description = description;
 		this.verified = verified;
 		this.sold = sold;
-		this.sellerIdUser = sellerIdUser;
+		this.usersIdSeller = usersIdSeller;
 	}// Cars
 
 	// Getters and setters
@@ -167,12 +167,12 @@ public class Cars {
 		this.nuSerial = nuSerial;
 	}
 
-	public Long getSellerIdUser() {
-		return sellerIdUser;
+	public Long getUsersIdSeller() {
+		return usersIdSeller;
 	}
 
-	public void setSellerIdUser(Long sellerIdUser) {
-		this.sellerIdUser = sellerIdUser;
+	public void setUsersIdSeller(Long usersIdSeller) {
+		this.usersIdSeller = usersIdSeller;
 	}
 
 	// toString
@@ -181,7 +181,7 @@ public class Cars {
 		return "Cars [idCar=" + idCar + ", type=" + type + ", brand=" + brand + ", name=" + name + ", year=" + year
 				+ ", kilometer=" + kilometer + ", transmission=" + transmission + ", price=" + price + ", img=" + img
 				+ ", owners=" + owners + ", description=" + description + ", verified=" + verified + ", sold=" + sold
-				+ ", sellerIdUser=" + sellerIdUser + "]";
+				+ ", usersIdSeller=" + usersIdSeller + "]";
 	} // toString
 	
 	

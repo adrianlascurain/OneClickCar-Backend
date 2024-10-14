@@ -34,7 +34,7 @@ COMMENT = '	';
 -- Table `OneClickCar`.`cars`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OneClickCar`.`cars` (
-  `id_cars` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_car` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NOT NULL,
   `brand` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
@@ -48,8 +48,8 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`cars` (
   `verified` TINYINT UNSIGNED NOT NULL,
   `sold` TINYINT UNSIGNED NOT NULL,
   `nu_serial` VARCHAR(17) NOT NULL,
-  `users_id_user` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_cars`, `users_id_user`),
+  `users_id_seller` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_car`, `users_id_seller`),
   UNIQUE INDEX `nu_serial_UNIQUE` (`nu_serial` ASC) VISIBLE)
 ENGINE = InnoDB;
 

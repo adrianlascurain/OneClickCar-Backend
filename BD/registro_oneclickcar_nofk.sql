@@ -12,10 +12,10 @@ INSERT INTO users (id_user, full_name, phone_number, email, birth_date, password
 
 -- Inserción de datos en la tabla Cars
 INSERT INTO `OneClickCar`.`cars` 
-(`id_cars`, `type`, `brand`, `name`, `year`, `kilometer`, `transmission`, `price`, `img`, `owners`, `description`, `verified`, `sold`, `nu_serial`, `users_id_user`) VALUES
-(1, 'Sedan', 'Chevrolet', 'Cavalier', 2021, 51000, 'Manual', 320000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/jzmc4om5b6305qnkarzp.jpg', 2, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 'SFABK3AB5PA093101', 2),
-(2,'Sedan', 'KIA', 'Forte', 2019, 97000, 'Manual', 217000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/xrw9p0u81kudod72eo9z.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 'SFABK3AB5PA093102', 3),
-(3, 'Sedan', 'KIA', 'Forte', 2022, 38000, 'Manual', 280000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/pfmdsxdozg4muh8rsm7i.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 'SFABK3AB5PA093103', 4),
+(`id_car`, `type`, `brand`, `name`, `year`, `kilometer`, `transmission`, `price`, `img`, `owners`, `description`, `verified`, `sold`, `nu_serial`, `users_id_seller`) VALUES
+(1, 'Sedán', 'Chevrolet', 'Cavalier', 2021, 51000, 'Manual', 320000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/jzmc4om5b6305qnkarzp.jpg', 2, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 'SFABK3AB5PA093101', 2),
+(2,'Sedán', 'KIA', 'Forte', 2019, 97000, 'Manual', 217000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/xrw9p0u81kudod72eo9z.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 'SFABK3AB5PA093102', 3),
+(3, 'Sedán', 'KIA', 'Forte', 2022, 38000, 'Manual', 280000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/pfmdsxdozg4muh8rsm7i.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 'SFABK3AB5PA093103', 4),
 (4, 'Sedán', 'Toyota', 'Corolla', 2020, 76000, 'Automático', 250000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/jzcifbic9pvzj0ntw8ek.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 'SFABK3AB5PA093104', 5),
 (5, 'Sedán', 'Dodge', 'Attitude', 2021, 66000, 'Automático', 190000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889397/CARROS%20ACTUALIZACION/SEDAN/r7yx7ajnarxwyrjskiob.jpg', 2, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0, 'SFABK3AB5PA093105', 6),
 (6, 'Coupé', 'Ford', 'Mustang', 2014, 164000, 'Manual', 170000, 'https://res.cloudinary.com/duqki6x6t/image/upload/v1727889395/CARROS%20ACTUALIZACION/COUPE/m2scaucxbiugsglz9pyv.jpg', 1, 'Llevate este excelente vehículo en óptimas condiciones. Ha pasado todas las revisiones (mécanica y legal), así que contacta al vendedor para más información, cita para revisión o compra.', 1, 0,'SFABK3AB5PA093106', 2),
@@ -67,11 +67,11 @@ INSERT INTO payment_methods (id_card, name_card, type_card, number_card, date_ca
 
 -- Inserción de datos en la tabla Deposit_method
 INSERT INTO deposit_methods (id_account, name_account, name_bank, account_bank, users_id_user) VALUES
-(1, 'Luis Meléndez', 'BBVA', '1234567890', 2),
-(2, 'Libertad Rivas', 'Banamex', '0987654321', 3),
-(3,'Antonio Rosas', 'Banorte', '2345678901', 4),
-(4, 'Sergio Rolón', 'Santander', '3456789012', 5),
-(5, 'Adrián Hernández', 'HSBC', '4567890123', 6);
+(1, 'Luis Meléndez', 'BBVA', '123456789012345678', 2),
+(2, 'Libertad Rivas', 'Banamex', '098765432112345678', 3),
+(3,'Antonio Rosas', 'Banorte', '234567890112345678', 4),
+(4, 'Sergio Rolón', 'Santander', '345678901212345678', 5),
+(5, 'Adrián Hernández', 'HSBC', '456789012312345678', 6);
 
 -- Inserción de datos en la tabla Transactions
 INSERT INTO transactions (id_transaction, date_transaction, users_id_buyer, users_id_seller, cars_id_cars, payment_method_id_card, deposit_method_id_account) VALUES
