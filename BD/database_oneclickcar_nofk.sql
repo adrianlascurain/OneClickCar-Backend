@@ -18,12 +18,12 @@ USE `OneClickCar` ;
 -- Table `OneClickCar`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OneClickCar`.`users` (
-  `id_user` INT UNSIGNED NOT NULL,
+  `id_user` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `full_name` VARCHAR(80) NOT NULL,
   `phone_number` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `birth_date` VARCHAR(10) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(150) NOT NULL,
   `type_user` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_user`))
 ENGINE = InnoDB
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `OneClickCar`.`deposit_methods` (
   `id_account` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name_account` VARCHAR(45) NOT NULL,
   `name_bank` VARCHAR(45) NOT NULL,
-  `account_bank` VARCHAR(16) NOT NULL,
+  `account_bank` VARCHAR(18) NOT NULL,
   `users_id_user` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id_account`, `users_id_user`))
 ENGINE = InnoDB;
