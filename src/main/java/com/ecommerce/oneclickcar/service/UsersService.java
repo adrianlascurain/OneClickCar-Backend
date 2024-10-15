@@ -3,6 +3,7 @@ package com.ecommerce.oneclickcar.service;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -83,5 +84,13 @@ public class UsersService {
 		return user;
 	}// updatePassword
 	
+	public Users getUsersByEmail(String userEmail) {
+		
+		Optional <Users> user = usersRepository.findByEmail(userEmail);
+		if(user.isPresent()) {
+			return user.get();
+		}//isPresent
+		return null;
+	}
 	
 }

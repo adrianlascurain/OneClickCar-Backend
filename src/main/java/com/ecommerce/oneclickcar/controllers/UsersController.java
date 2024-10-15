@@ -2,6 +2,7 @@ package com.ecommerce.oneclickcar.controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -69,4 +70,10 @@ public class UsersController {
 	public Users deleteUser(@PathVariable("userId") Long userId) {
 		return userService.deleteUser(userId);
 	}// deleteUser
+	
+	@CrossOrigin(origins = "http://127.0.0.1:5501/")
+	@GetMapping(path="email/{userEmail}")
+	public Users getUsuario(@PathVariable("userEmail") String userEmail) {
+		return userService.getUsersByEmail(userEmail);
+	}//getUsuario()
 }
