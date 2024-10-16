@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="../fonts/LogoBlackOCK.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>user_profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Fuentes -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- style -->
+    <link rel="stylesheet" href="../css/navigation.css"/>
+    <link rel="stylesheet" href="../css/user_profile.css">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <script src="../assets/sweetAlert2/dist/sweetalert2.all.min.js"></script>
+    <script src="../assets/emailJS/dist/email.min.js"></script>
+</head>
+
+<body>
+    <header id="nav_bar"></header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2 barraLeft">
+            <div class="opcionesPerfil">
+              <br />
+              <h2 id="linkProfile" class="nav-link active" >INFORMACIÓN USUARIO</h2>
+              <br />
+              <h2 id="linkPurchase">HISTORIAL DE COMPRAS</h2>
+              <br />
+              <h2 id="linkPayment">FORMAS DE PAGO</h2>
+              <br />
+              <h2 id="linkDeposit">CUENTA DE DEPÓSITO</h2>
+              <br />
+              <h2 id="linkLogOut">
+                CERRAR SESIÓN
+                <img
+                  src="https://res.cloudinary.com/duxbrimwv/image/upload/v1726284778/exitIcon_dg9gyx.svg"
+                  alt="exitIcon"
+                />
+              </h2>
+            </div><!-- div opcionesPerfil-->
+                </div>
+                <div class="col-sm-8 infoCenter">
+                    <div class="cajaProfile">
+                        <h1>Mi Perfil</h1>
+                        <img src="https://res.cloudinary.com/duxbrimwv/image/upload/v1726284372/userIcon_utoimu.png" alt="perfilIcon">
+                        <div class="cajaProfileForm">
+                                <form action="" id="InfoProfile">
+                                    <div class="itemForm">
+                                        <label for="name-ipt">NOMBRE</label>
+                                        <input type="text" id="name-ipt">
+                                    </div>
+                                    <div class="itemForm">
+                                        <label for="correo-ipt">CORREO ELECTRÓNICO</label>
+                                        <input type="text" id="correo-ipt">
+                                    </div>
+                                    <div class="itemForm">
+                                        <label for="birthday-ipt">FECHA DE NACIMIENTO</label>
+                                        <input type="text" id="birthday-ipt">
+                                    </div>
+                                    <div class="itemForm">
+                                        <label for="telefono-ipt">TELÉFONO</label>
+                                        <input type="text" id="telefono-ipt">
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 cochesRight">
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer id="footer_back"></footer>
+
+    <!-- Scripts -->
+     <!-- navbar y footer -->
+    <script src="../js/navigation.js" defer></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+        <!-- funcionalidad página -->
+    <script defer src="../js/user_profile.js"></script>
+    <script defer src="../js/subscribe.js"></script>
+</body>
+</html>
+
