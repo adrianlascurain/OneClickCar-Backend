@@ -102,24 +102,24 @@ class OneclickcarApplicationTests {
 	}//pruebaPut
 	
 	@Test
-	@Disabled("Probado la primera vez, desphabilitado")
+	//@Disabled("Probado la primera vez, desphabilitado")
 	@DisplayName("Se prueba crear un nuevo payment method http://localhost:8080/api/paymentmethods/")
 	void pruebaPost() throws Exception {
 		PaymentMethod p = new PaymentMethod();
-		p.setNameCard("Venustiago Carranza");
+		p.setNameCard("Pedro Infante");
 		p.setTypeCard("100166.jpeg");
-		p.setNumberCard("5345678917823458");
+		p.setNumberCard("5345678917824558");
 		p.setDateCard("2025-05-10");
-		p.setCvvCard("099");
+		p.setCvvCard("478");
 		p.setUsersIdUser(1L);
-		
+		p.setBankName("Banco Azteca");
 		this.mockMvc.perform(post("/api/paymentmethods/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(asJsonString(p))
 			    .header("Authorization", token))
 			    .andDo(print())
 			    .andExpect(status().isOk())
-			    .andExpect(content().string(containsString("Venustiago")));
+			    .andExpect(content().string(containsString("Pedro")));
 
 				
 	}//pruebaPost
