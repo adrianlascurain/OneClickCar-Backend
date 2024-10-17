@@ -51,7 +51,7 @@ public class PaymentMethodService {
 
 	public PaymentMethod updatePaymentMethod(Long idCard, String nameCard, 
 			String typeCard, String numberCard, String dateCard, 
-			String cvvCard) {
+			String cvvCard, String bankName) {
 		
 		PaymentMethod payment=null;
 		if(paymentMethodRepository.existsById(idCard)) {
@@ -61,6 +61,7 @@ public class PaymentMethodService {
 				if(numberCard !=null) paymentMethod.setNumberCard(numberCard);
 				if(dateCard !=null) paymentMethod.setDateCard(dateCard);
 				if(cvvCard !=null) paymentMethod.setCvvCard(cvvCard);
+				if(bankName !=null) paymentMethod.setCvvCard(bankName);
 				paymentMethodRepository.save(paymentMethod);
 				payment=paymentMethod;
 				
