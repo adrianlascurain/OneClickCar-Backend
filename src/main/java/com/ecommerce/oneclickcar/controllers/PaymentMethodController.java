@@ -59,10 +59,11 @@ private final PaymentMethodService paymentMethodService;
 			@RequestParam(required=false) String typeCard,
 			@RequestParam(required=false) String numberCard,
 			@RequestParam(required=false) String dateCard,
-			@RequestParam(required=false) String cvvCard			
+			@RequestParam(required=false) String cvvCard,
+			@RequestParam(required=false) String bankName
 			) {
 		return paymentMethodService.updatePaymentMethod(idCard, nameCard, 
-				typeCard, numberCard, dateCard, dateCard);
+				typeCard, numberCard, dateCard, cvvCard,bankName);
 	}//updatePaymentMethod
 
 }

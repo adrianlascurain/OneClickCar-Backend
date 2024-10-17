@@ -1,0 +1,136 @@
+:root{
+    --bg-color: #D0CECE;
+    --navfoo-bg-color: #002B5B;
+    background-color: var(--bg-color);
+    opacity: 0.96;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'Tw-Cen-MT';
+    src: url('../fonts/Tw_Cen_MT_Condensed_Extra_Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.who-we-are h2{
+    margin-bottom: 40px;
+    color: var(--navfoo-bg-color);
+    font-weight: 500;
+}
+
+.who-we-are h2{
+    margin-bottom: 40px;
+}
+
+
+.car-image img{
+    opacity: 0.6;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.Carl-figure{
+    width: 100%;
+}
+
+.Carl-figure img{
+    width: 100%;
+}
+
+.team{
+    margin: 20px 20px;
+}
+
+.team h2{
+    color: var(--navfoo-bg-color);
+    font-weight: 500;
+}
+
+main{
+    background-color: var(--bg-color);
+    padding: 40px 20px;
+}
+
+main .our-team{
+    text-align: left;
+}
+
+.card .photo{
+    width: 100%;
+    height: 400px;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    object-fit: cover;
+}
+
+.favorite-car{
+    bottom: 5px;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    display: none;
+    pointer-events: none;
+}
+
+.favorite-car p{
+    color: whitesmoke;
+    font-weight: 700;
+    font-size: 30px;
+    font-family: "Montserrat";
+}
+
+main p{
+    font-family: "Montserrat";
+    font-size: 18px;
+    color: black;
+}
+
+.social-media-team figure{
+    width: 70px;
+    height: 60px;
+}
+
+.social-media-team img{
+    object-fit: contain;
+}
+
+.contact-icons:hover{
+    scale: 1.2;
+    transition: 0.3s;
+}
+
+@media (min-width: 400px) {
+    main .our-team{
+        text-align: left;
+    }
+
+}
+
+@media (max-width: 1500px) {
+
+    main .our-team{
+        text-align: center;
+    }
+}
+
+@media (max-width: 1000px){
+    .card .photo{
+        width: 70%;
+        height: 400px;
+    }
+}
+
+@media (max-width: 700px){
+    .card .photo{
+        width: 80%;
+        height: 400px;
+    }
+}

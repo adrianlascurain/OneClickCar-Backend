@@ -24,6 +24,8 @@ public class PaymentMethod {
 	private String dateCard;
 	@Column(nullable=false)
 	private String cvvCard;
+	@Column(nullable = false)
+	private String bankName;
 	@Column(nullable=false)
 	private Long usersIdUser;
 	
@@ -32,12 +34,13 @@ public class PaymentMethod {
 	}
 
 	public PaymentMethod(String nameCard, String typeCard, String numberCard, String dateCard,
-			String cvvCard, Long usersIdUser) {
+			String cvvCard,String bankName, Long usersIdUser) {
 		this.nameCard = nameCard;
 		this.typeCard = typeCard;
 		this.numberCard = numberCard;
 		this.dateCard = dateCard;
 		this.cvvCard = cvvCard;
+		this.bankName = bankName;
 		this.usersIdUser = usersIdUser;
 	}
 	// Setters and getters
@@ -88,6 +91,14 @@ public class PaymentMethod {
 
 	public void setCvvCard(String cvvCard) {
 		this.cvvCard = cvvCard;
+	}
+
+	public String getBankName() {
+		return bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
 	}
 
 	public Long getUsersIdUser() {
