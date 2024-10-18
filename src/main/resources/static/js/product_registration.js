@@ -317,11 +317,12 @@ function registerCar(raw) {
         redirect: "follow"
     };
 
-    fetch("http://localhost:8080/api/cars/", requestOptions)
+    fetch("http://3.16.180.62/api/cars/", requestOptions)
     .then((response) => response.json())
     .then((dataCar) => {
-        console.log(dataCar);
-        if (dataCar) {
+        
+        if (dataCar.idCar) {
+            
         // Mensaje de éxito
         Swal.fire({
             title: "Vehículo registrado con éxito.",
@@ -333,14 +334,17 @@ function registerCar(raw) {
             imageAlt: "Custom image",
             icon: "success",
         });
+        // Clean form
+        registerForm.reset();
+        resetForm()
         }
         else {
         // Mostrar mensaje error
-            Swal.fire({
-        title: "Registro fallido",
-        text: `El número de serie ${serialNumber} ya se encuentra registrado`,
-        imageAlt: "Custom image",
-        icon: "error",
+        Swal.fire({
+            title: "Registro fallido",
+            text: `El número de serie ${dataCar.nuSerial} ya se encuentra registrado`,
+            imageAlt: "Custom image",
+            icon: "error",
     });
             
         }
@@ -425,14 +429,13 @@ registerForm.addEventListener("submit", function (event) {
     //     icon: "success",
     // });
 
-    // Clean form
-    registerForm.reset();
     
-    document
-    .getElementById("uploadedimage")
-    .setAttribute("src", "https://res.cloudinary.com/dz6zf3yio/image/upload/v1726810826/occ-mascota_fddolf.png");
+    
+    // document
+    // .getElementById("uploadedimage")
+    // .setAttribute("src", "https://res.cloudinary.com/dz6zf3yio/image/upload/v1726810826/occ-mascota_fddolf.png");
 
-    resetForm()
+    // resetForm()
 })
 
 // Function to get stored vehicles
@@ -523,6 +526,12 @@ function resetForm(){
     serialNumber.style.border = "3px solid #7b7b7b";
     description.style.border = "3px solid #7b7b7b";
 
+    // Restore Carl image
+    document
+    .getElementById("uploadedimage")
+    .setAttribute("src", "https://res.cloudinary.com/dz6zf3yio/image/upload/v1726810826/occ-mascota_fddolf.png");
+
+    // Hide alert div
     let alertDiv = document.getElementById("alertaVehiculos");
     hideAlert(alertDiv);
     hidePreview();

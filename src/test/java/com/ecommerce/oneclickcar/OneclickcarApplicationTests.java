@@ -112,7 +112,7 @@ class OneclickcarApplicationTests {
 		p.setDateCard("2025-05-10");
 		p.setCvvCard("478");
 		p.setUsersIdUser(1L);
-		p.setBankName("Banco Azteca");
+		p.setNameBank("Banco Azteca");
 		this.mockMvc.perform(post("/api/paymentmethods/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(asJsonString(p))

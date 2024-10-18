@@ -48,18 +48,18 @@ const requestOptions = {
   redirect: "follow"
 };
 
-fetch("http://localhost:8080/api/users/", requestOptions)
-  .then((response) => response.text())
-  .then((result) => {
-    console.log(result);
-    if (result.length > 0) {
+fetch("http://3.16.180.62/api/users/", requestOptions)
+  .then((response) => response.json())
+  .then((user) => {
+    
+    if (user.idUser != null) {
+      document.getElementById('userForm').reset();
       // Mostrar mensaje de éxito
-      alertSuccess('Datos guardados', 'Los datos han sido guardados correctamente en local storage.').then(() => {
+      alertSuccess('Registro exitoso', 'Felicidades has creado una nueva cuenta, ahora puedes dirigirte a iniciar sesión.');
         // Reiniciar el formulario una vez que el usuario cierra la alerta de éxito
-        document.getElementById('userForm').reset();
-      });
-      //guardar en LocalStorage
-      localStorage.setItem("userCredentials", result);  //usando  email como 'clave'
+
+    } else {
+      alertFailure("Registro fallido", `El email ${user.email} ya se encuentra registrado, prueba con otro.`);
     }
    })
   .catch((error) => console.error(error));

@@ -49,6 +49,8 @@ let linkLogOut = document.getElementById("linkLogOut");
 let linkDeposit = document.getElementById("linkDeposit");
 
 let carouselSold = document.getElementById("carouselSold");
+let carouselBought = document.getElementById("carouselBought");
+
 // Función para mostrar sweet alert de éxito
 function alertSuccess(titleShow, textShow) {
   Swal.fire({
@@ -144,7 +146,7 @@ function createTableAdmFetch() {
     redirect: "follow",
   };
 
-  fetch("http://localhost:8080/api/cars/", requestOptions)
+  fetch("http://3.16.180.62/api/cars/", requestOptions)
     .then((response) => response.json())
     .then((dataCarsGeneral) => {
   infoAdmin.innerHTML = "";
@@ -154,7 +156,7 @@ function createTableAdmFetch() {
   <div class="text-left">
   <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar</a></div>
   <div class="table-responsive">
-  <table class="table table-bordered  border-secondary align-middle"> 
+  <table class="table table-striped table-bordered  border-secondary align-middle"> 
       <thead>
         <tr>
       <th scope="col">Id vehículo</th>
@@ -214,14 +216,14 @@ function createTableAdmFetchComm() {
     redirect: "follow",
   };
 
-  fetch("http://localhost:8080/api/comments/", requestOptions)
+  fetch("http://3.16.180.62/api/comments/", requestOptions)
     .then((response) => response.json())
     .then((dataComments) => {
       infoAdmin.innerHTML = "";
       let htmlContent = "";
       htmlContent += ` 
   <div class="table-responsive">
-  <table class="table table-bordered  border-secondary align-middle"> 
+  <table class="table table-striped table-bordered  border-secondary align-middle"> 
       <thead>
         <tr>
       <th scope="col">Id comentario</th>
@@ -271,14 +273,14 @@ function createTableAdmFetchTrans() {
     redirect: "follow",
   };
 
-  fetch("http://localhost:8080/api/transactions/", requestOptions)
+  fetch("http://3.16.180.62/api/transactions/", requestOptions)
     .then((response) => response.json())
     .then((dataTransactions) => {
   infoAdmin.innerHTML = "";
   let htmlContent = "";
   htmlContent += ` 
   <div class="table-responsive">
-  <table class="table table-bordered  border-secondary align-middle"> 
+  <table class="table table-striped  table-bordered  border-secondary align-middle"> 
       <thead>
         <tr>
       <th scope="col">Id transacción</th>
@@ -341,11 +343,11 @@ function addCarAdmFetch() {
     redirect: "follow",
   };
 
-  fetch("http://localhost:8080/api/cars/", requestOptions)
-    .then((response) => response.text())
+  fetch("http://3.16.180.62/api/cars/", requestOptions)
+    .then((response) => response.json())
     .then((dataCar) => {
-      console.log(dataCar);
-      if (dataCar.length > 0) {
+     
+      if (dataCar.idCar!=null) {
           noSerieTextAdd.value="";
           tipoTextAdd.value="";
           marcaTextAdd.value="";
@@ -365,13 +367,13 @@ function addCarAdmFetch() {
         alertSuccess("Registro exitoso", "El vehículo fue agregado.");
       } else {
         // Mostrar mensaje error
-        alertFailure("Registro fallido",`El número de serie ${noSerieTextAdd.value} ya se encuentra registrado`);
+        alertFailure("Registro fallido",`El número de serie ${dataCar.nuSerial} ya se encuentra registrado`);
       }
     })
     .catch((error) => console.error(error));
 } //function addDepositAdmFetch()
 
-// Función que recupera la información específica del usuario y la muestra en el modal
+// Función que recupera la información específica del usuario y la muestra en el p
 function showInfoModAdmFetch(idCar) {
     const myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer: ${sessionStorage.getItem("token")}`);
@@ -381,10 +383,10 @@ function showInfoModAdmFetch(idCar) {
     redirect: "follow",
   };
 
-  fetch(`http://localhost:8080/api/cars/${idCar}`, requestOptions)
+  fetch(`http://3.16.180.62/api/cars/${idCar}`, requestOptions)
     .then((response) => response.json())
     .then((dataCar) => {
-      console.log(dataCar);
+     
       noSerieTextNew.setAttribute("disabled","true");
     noSerieTextNew.value = dataCar.nuSerial;
     tipoTextNew.value = dataCar.type;
@@ -415,12 +417,12 @@ function modCarAdmFetch(idCar) {
   };
 
   fetch(
-        `http://localhost:8080/api/cars/${idCar}?numSerial=${noSerieTextNew.value}&type=${tipoTextNew.value}&brand=${marcaTextNew.value}&name=${nombreTextNew.value}&=year${anioTextNew.value}&kilometer=${kilTextNew.value}&transmission=${transTextNew.value}&price=${precioTextNew.value}&img=${imgTextNew.value}&owners=${duenosTextNew.value}&description=${descripTextNew.value}&verified=${verifTextNew.value}&sold=${vendTextNew.value}&=usersIdSeller${idVendedorTextAdd.value}`,
+        `http://3.16.180.62/api/cars/${idCar}?numSerial=${noSerieTextNew.value}&type=${tipoTextNew.value}&brand=${marcaTextNew.value}&name=${nombreTextNew.value}&=year${anioTextNew.value}&kilometer=${kilTextNew.value}&transmission=${transTextNew.value}&price=${precioTextNew.value}&img=${imgTextNew.value}&owners=${duenosTextNew.value}&description=${descripTextNew.value}&verified=${verifTextNew.value}&sold=${vendTextNew.value}&=usersIdSeller${idVendedorTextAdd.value}`,
     requestOptions
   )
     .then((response) => response.text())
     .then((dataCar) => {
-      console.log(dataCar);
+      
       if (dataCar.length > 0) {
           noSerieTextAdd.value="";
           tipoTextAdd.value="";
@@ -457,10 +459,10 @@ const requestOptions = {
   redirect: "follow"
 };
 
-fetch(`http://localhost:8080/api/comments/${idComment}?approved=1`, requestOptions)
+fetch(`http://3.16.180.62/api/comments/${idComment}?approved=1`, requestOptions)
   .then((response) => response.text())
   .then((result) => {
-    console.log(result);
+    
     createTableAdmFetchComm();
     alertSuccess("Aprobación exitosa","El comentario fue aprobado.");
    })
@@ -476,10 +478,10 @@ const requestOptions = {
     redirect: "follow",
   };
 
-  fetch(`http://localhost:8080/api/comments/${idComment}`, requestOptions)
+  fetch(`http://3.16.180.62/api/comments/${idComment}`, requestOptions)
     .then((response) => response.text())
     .then((result) => {
-      console.log(result);
+    
       createTableAdmFetchComm();
       alertSuccess("Eliminación exitosa","El comentario fue eliminado");
     })
@@ -506,10 +508,10 @@ const requestOptions = {
     redirect: "follow",
   };
 
-  fetch(`http://localhost:8080/api/cars/${idCar}`, requestOptions)
+  fetch(`http://3.16.180.62/api/cars/${idCar}`, requestOptions)
     .then((response) => response.text())
     .then((result) => {
-      console.log(result);
+    
       createTableAdmFetch();
       alertSuccess(
         "Eliminación exitosa",
@@ -532,136 +534,190 @@ function validateUser() {
       redirect: "follow"
     };
 
-fetch(`http://localhost:8080/api/users/email/${emailUser}`, requestOptions)
+fetch(`http://3.16.180.62/api/users/email/${emailUser}`, requestOptions)
   .then((response) => response.json())
   .then((userData) => {
-if (userData.typeUser == "admin") {
-  infoCliente.classList.add("d-none");
-  infoCliente.innerHTML = "";
-  
-  createTableAdmFetch();
-
-  
+    if (userData.typeUser == "admin") {
+      infoCliente.classList.add("d-none");
+      infoCliente.innerHTML = "";
+      
+      createTableAdmFetch();
 
 
-  btnAgregarAdm.addEventListener("click", (event) => {
-    event.preventDefault();
-      // Validamos que no haya campos vacíos, si no lanzamos sweet alert
-      if (noSerieTextAdd.value != "" &&
-          tipoTextAdd.value != "" &&
-          marcaTextAdd.value != "" &&
-          nombreTextAdd.value != "" &&
-          anioTextAdd.value != "" &&
-          kilTextAdd.value != "" &&
-          transTextAdd.value != "" &&
-          precioTextAdd.value != "" &&
-          imgTextAdd.value != "" &&
-          duenosTextAdd.value != "" &&
-          descripTextAdd.value != "" &&
-          verifTextAdd.value != "" &&
-          vendTextAdd.value != "" &&
-          idVendedorTextAdd.value != "") {
-        addCarAdmFetch()
-        
+      btnAgregarAdm.addEventListener("click", (event) => {
+        event.preventDefault();
+          // Validamos que no haya campos vacíos, si no lanzamos sweet alert
+          if (noSerieTextAdd.value != "" &&
+              tipoTextAdd.value != "" &&
+              marcaTextAdd.value != "" &&
+              nombreTextAdd.value != "" &&
+              anioTextAdd.value != "" &&
+              kilTextAdd.value != "" &&
+              transTextAdd.value != "" &&
+              precioTextAdd.value != "" &&
+              imgTextAdd.value != "" &&
+              duenosTextAdd.value != "" &&
+              descripTextAdd.value != "" &&
+              verifTextAdd.value != "" &&
+              vendTextAdd.value != "" &&
+              idVendedorTextAdd.value != "") {
+            addCarAdmFetch()
+            
+          } else {
+            alertFailure("Registro fallido","Ningún campo puede estar vacío" );
+          }//else
+      });//btnAgregar.addEventListener()
+
+
+      btnChangeCars.addEventListener("click", event => {
+        infoAdmin.innerHTML = "";
+        createTableAdmFetch();
+      });
+      btnChangeTrans.addEventListener("click", event => {
+        infoAdmin.innerHTML = "";
+        createTableAdmFetchTrans();
+      });
+      btnChangeComm.addEventListener("click", event => {
+        infoAdmin.innerHTML = "";
+        createTableAdmFetchComm();
+      });
+      
+    } else if (userData.typeUser =="client") {
+      // Escondemos la vista de administrador
+      infoAdmin.innerHTML = "";
+      headerAdmin.innerHTML = "";
+      
+      createCarouselSold();
+      recoverBoughts();
+      //------------------------------------------------PENDIENTE
+    } else {
+        infoCliente.classList.add("d-none");
+      infoAdmin.classList.add("d-none");
+      if ((window.location.pathname = "/pages/purchase_history.html")) {
+        // local
+        window.location.href = "../pages/sign_in.html";
       } else {
-        alertFailure("Registro fallido","Ningún campo puede estar vacío" );
-      }//else
-  });//btnAgregar.addEventListener()
-
-
-  btnChangeCars.addEventListener("click", event => {
-    infoAdmin.innerHTML = "";
-    createTableAdmFetch();
-  });
-  btnChangeTrans.addEventListener("click", event => {
-    infoAdmin.innerHTML = "";
-    createTableAdmFetchTrans();
-  });
-  btnChangeComm.addEventListener("click", event => {
-    infoAdmin.innerHTML = "";
-    createTableAdmFetchComm();
-  });
-
-} else if (userData.typeUser =="client") {
-  // Escondemos la vista de administrador
-  infoAdmin.innerHTML = "";
-  headerAdmin.innerHTML = "";
-  
-  createCarouselSold();
-  //createCarouselBuyed();
-  //------------------------------------------------PENDIENTE
-} else {
-    infoCliente.classList.add("d-none");
-  infoAdmin.classList.add("d-none");
-  if ((window.location.pathname = "/pages/purchase_history.html")) {
-    // local
-    window.location.href = "../pages/sign_in.html";
-  } else {
-    // github
-    window.location.href =
-      "https://adrianlascurain.github.io/OneClickCar/pages/sign_in.html";
-  }
-}
+        // github
+        window.location.href =
+          "https://adrianlascurain.github.io/OneClickCar/pages/sign_in.html";
+      }
+    }
   }).catch((error) => console.error(error));
 }
-// ***********Ejecución
-validateUser();
+function recoverBoughts() {
+  let idUserLogged = parseInt(sessionStorage.getItem("idUser"));
+   const myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer: ${sessionStorage.getItem("token")}`);
+
+   const requestOptions = {
+     method: "GET",
+     headers: myHeaders,
+    redirect: "follow",
+  };
+
+  fetch("http://3.16.180.62/api/transactions/", requestOptions)
+    .then((response) => response.json())
+    .then((dataTransactions) => {
+    
+      let carsBought=[];
+      if (dataTransactions[0] != null) {
+        for (i = 0; i < dataTransactions.length; i++){
+          if (dataTransactions[i].usersIdBuyer == idUserLogged) {
+            carsBought.push(dataTransactions[i].carsIdCars);
+          }
+        }
+     
+        createCarouselBought(carsBought);
+      } else {
+        let htmlContMobile="";
+        htmlContMobile += `<div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="">
+                <div class="card" >
+              <img src="" alt="Aún no has comprado vehículos"
+              >
+              <div class="card-body>
+              <h5></>
+              <span></span><hr>
+              <span></span>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>`;
+        carouselBought.insertAdjacentHTML("beforeend", htmlContMobile);
+        htmlContMobile = "";
+    }
+
+    })
 
 
 
 
+}
 
 
 
 // Función para crear carousels en versión Mobile
-function createCarouselBuyed() {
-  htmlContMobile += `
-      <div class="carousel-inner">
+function createCarouselBought(carsBought) {
+
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer: ${sessionStorage.getItem("token")}`);
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow"
+  };
+
+  fetch(`http://3.16.180.62/api/cars/`, requestOptions)
+    .then((response) => response.json())
+    .then((dataCarsGeneral) => {
+      let htmlContMobile="";
+      let isActive = false;
+      htmlContMobile += `<div class="carousel-inner">
   `; // Inserción hasta inner
-  for (let i = 0; i < listCars.length; i++) {
-    if (isActive) {
-      htmlContMobile += `
-          <div class="carousel-item">`;
-    } else {
-      htmlContMobile += `
-          <div class="carousel-item active">`;
-    }
-    isActive = true;
-    htmlContMobile += `
-              <div class="col-12">
+      for (i = 0; i < dataCarsGeneral.length; i++) {
+       
+        for (j = 0; j < carsBought.length; j++){
+           
+        if (dataCarsGeneral[i].idCar == carsBought[j] &&
+          dataCarsGeneral[i].sold == 1
+        ) {
+
+          if (isActive) {
+            htmlContMobile += `<div class="carousel-item">`;
+          } else {
+            htmlContMobile += `<div class="carousel-item active">`;
+          }
+          isActive = true;
+          htmlContMobile += `
+              
                 <div class="card" >
                   <!-- Card -->
-                  <img src="${
-                    listCars[i].img
-                  }" class="card-img-top img-fluid" alt="${listCars[i].name}" />
+                  <img src="${dataCarsGeneral[i].img
+            }" class="card-img-top img-fluid" alt="${dataCarsGeneral[i].name}" />
                   <div class="card-body text-center"><!-- Card body -->
-                    <h5 class="text-center card-text">${listCars[i].brand} ${
-      listCars[i].name
-    } ${listCars[i].year}</h5><hr>
-                    <span class="card-text">| ${listCars[
-                      i
-                    ].kilometer.toLocaleString("es-MX")} KM |</span><hr>
-                    <span class="card-text">$ ${listCars[
-                      i
-                    ].price.toLocaleString("es-MX")}</span>
-                    <div class="text-center"><a id="btnInfoMob${
-                      listCars[i].idCar
-                    }"  onclick="productInformation(${listCars[i].idCar},${
-      listCars[i].usersIdSeller
-    })" oncontextmenu="productInformation(${listCars[i].idCar},${
-      listCars[i].usersIdSeller
-    })" class="btn btn-primary btn-informacion" ">Más información</a></div><!-- fin div boton-->
-                  </div><!-- ****************************FIN Card body -->
+                  <br>
+                    <h5 class="text-center card-text">${dataCarsGeneral[i].brand} ${dataCarsGeneral[i].name
+            } ${dataCarsGeneral[i].year}</h5><hr><br>
+                    <span class="card-text">| ${dataCarsGeneral[i].kilometer.toLocaleString("es-MX")} KM |</span><hr><br>
+                    <span class="card-text">$${dataCarsGeneral[i].price.toLocaleString("es-MX")}</span><br>
+              </div><!-- ****************************FIN card-body -->
+            
                 </div><!-- ****************************FIN Card -->
-              </div><!-- ****************************FIN col-12 -->
-          </div> <!-- ****************************FIN carousel-item -->`;
-  } // for hasta final tarjetas
-  htmlContMobile += `
-      </div><!-- ****************************FIN carousel-inner -->
+              
+          </div> <!-- ****************************FIN carousel-item -->
+          </div><!-- ****************************FIN carousel-inner -->`;
+        }//if
+        }//for
+        }
+      htmlContMobile += `
+      
         <button
           class="carousel-control-prev"
           type="button"
-          data-bs-target="#carousel${tipoCarro}Mobile"
+          data-bs-target="#carouselBought"
           data-bs-slide="prev"
         >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -670,21 +726,22 @@ function createCarouselBuyed() {
         <button
           class="carousel-control-next"
           type="button"
-          data-bs-target="#carousel${tipoCarro}Mobile"
+          data-bs-target="#carouselBought"
           data-bs-slide="next"
         >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
   `;
+      // Inserción final al documento
+      carouselBought.insertAdjacentHTML("beforeend", htmlContMobile);
+      htmlContMobile = "";
+      isActive = false;
+    })//then
+    .catch((error) => console.error(error));
+}
 
-  // Inserción final al documento
-  carouselSold.insertAdjacentHTML("beforeend", htmlContMobile);
-  htmlContMobile = "";
-  isActive = false;
-} // createCarouselMobile()
 
-// Función para crear carousels en versión Mobile
 function createCarouselSold() {
   let htmlContMobile="";
   let idUserLogged = parseInt(sessionStorage.getItem("idUser"));
@@ -697,7 +754,7 @@ function createCarouselSold() {
     redirect: "follow"
   };
 
-  fetch(`http://localhost:8080/api/cars/`, requestOptions)
+  fetch(`http://3.16.180.62/api/cars/`, requestOptions)
     .then((response) => response.json())
     .then((dataCarsGeneral) => {
       htmlContMobile += `
@@ -716,16 +773,17 @@ function createCarouselSold() {
           }
           isActive = true;
           htmlContMobile += `
-              <div class="col-6">
+              <div class="">
                 <div class="card" >
                   <!-- Card -->
                   <img src="${dataCarsGeneral[i].img
             }" class="card-img-top img-fluid" alt="${dataCarsGeneral[i].name}" />
                   <div class="card-body text-center"><!-- Card body -->
+                  <br>
                     <h5 class="text-center card-text">${dataCarsGeneral[i].brand} ${dataCarsGeneral[i].name
-            } ${dataCarsGeneral[i].year}</h5><hr>
-                    <span class="card-text">| ${dataCarsGeneral[i].kilometer.toLocaleString("es-MX")} KM |</span><hr>
-                    <span class="card-text">${dataCarsGeneral[i].price.toLocaleString("es-MX")}</span>
+            } ${dataCarsGeneral[i].year}</h5><hr><br>
+                    <span class="card-text">| ${dataCarsGeneral[i].kilometer.toLocaleString("es-MX")} KM |</span><hr><br>
+                    <span class="card-text">$${dataCarsGeneral[i].price.toLocaleString("es-MX")}</span><br>
               </div><!-- ****************************FIN card-body -->
             
                 </div><!-- ****************************FIN Card -->
@@ -762,6 +820,12 @@ function createCarouselSold() {
     })//then
     .catch((error) => console.error(error));
 }
+// ***********Ejecución
+validateUser();
+
+
+
+
 
   
 
