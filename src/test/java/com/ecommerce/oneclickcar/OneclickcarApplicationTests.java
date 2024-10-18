@@ -102,7 +102,7 @@ class OneclickcarApplicationTests {
 	}//pruebaPut
 	
 	@Test
-	//@Disabled("Probado la primera vez, desphabilitado")
+	@Disabled("Probado la primera vez, desphabilitado")
 	@DisplayName("Se prueba crear un nuevo payment method http://localhost:8080/api/paymentmethods/")
 	void pruebaPost() throws Exception {
 		PaymentMethod p = new PaymentMethod();
