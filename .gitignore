@@ -39,3 +39,12 @@ out/
 
 src/main/resources/application.properties.local
 src/main/resources/static
+
+# Ignorar todos los archivos CSS
+src/main/resources/static/css/*.css
+
+# Ignorar todos los archivos JS
+src/main/resources/static/js/*.js
+
+# Ignorar todos los archivos HTML
+src/main/resources/static/pages/*.html
